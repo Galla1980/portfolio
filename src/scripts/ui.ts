@@ -34,11 +34,14 @@ document.addEventListener('click', (event) => {
 const menuToggle = document.getElementById('mobile-menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
 
-function setMenu(open: boolean) {
+function setMenu(open: boolean, restoreFocus = false) {
   if (!mobileMenu || !menuToggle) return;
   mobileMenu.hidden = !open;
   menuToggle.setAttribute('aria-expanded', String(open));
+  const label = open ? menuToggle.dataset.labelClose : menuToggle.dataset.labelOpen;
+  if (label) menuToggle.setAttribute('aria-label', label);
   if (open) mobileMenu.querySelector('a')?.focus({ preventScroll: true });
+  else if (restoreFocus) menuToggle.focus({ preventScroll: true });
 }
 
 menuToggle?.addEventListener('click', () => setMenu(Boolean(mobileMenu?.hidden)));
@@ -49,7 +52,7 @@ mobileMenu?.addEventListener('click', (event) => {
 });
 
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') setMenu(false);
+  if (event.key === 'Escape' && mobileMenu && !mobileMenu.hidden) setMenu(false, true);
 });
 
 window.matchMedia('(min-width: 768px)').addEventListener('change', (event) => {

@@ -18,6 +18,7 @@ const es = {
   'a11y.theme.light': 'Activar el modo oscuro',
   'a11y.lang': 'Cambiar a inglés',
   'a11y.menu': 'Abrir menú de navegación',
+  'a11y.menu.close': 'Cerrar menú de navegación',
   'a11y.toTop': 'Volver arriba',
 
   'nav.main': 'Navegación principal',
@@ -86,6 +87,7 @@ const en: Record<keyof typeof es, string> = {
   'a11y.theme.light': 'Switch to dark mode',
   'a11y.lang': 'Switch to Spanish',
   'a11y.menu': 'Open navigation menu',
+  'a11y.menu.close': 'Close navigation menu',
   'a11y.toTop': 'Back to top',
 
   'nav.main': 'Main navigation',

@@ -21,7 +21,7 @@ export function useTranslations(lang: Lang) {
 export const routes = {
   home: { es: '/es/', en: '/en/' },
   blog: { es: '/es/blog', en: '/en/blog' },
-  contact: { es: '/es/#contact', en: '/en/#contact' },
+  contact: { es: '/es/#contacto', en: '/en/#contacto' },
 } as const;
 
 const segmentMap: Record<string, string> = {
