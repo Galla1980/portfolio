@@ -1,8 +1,9 @@
 ---
 import Icon from './Icon.astro';
+import { hasCaseStudy } from '../data/cases';
 import type { Project } from '../data/projects';
 import type { Lang } from '../i18n/ui';
-import { useTranslations } from '../i18n/utils';
+import { routes, useTranslations } from '../i18n/utils';
 
 interface Props {
   project: Project;
@@ -15,6 +16,7 @@ const { project, lang, variant = 'compact', index = 0 } = Astro.props;
 const isFeature = variant === 'feature';
 const t = useTranslations(lang);
 const repoLabel = project.repo?.replace('https://github.com/', '') ?? '';
+const caseHref = hasCaseStudy(project.slug) ? `${routes.caseStudies[lang]}/${project.slug}` : null;
 ---
 
 <article
@@ -95,19 +97,35 @@ const repoLabel = project.repo?.replace('https://github.com/', '') ?? '';
     </ul>
   )}
 
-  {project.repo && (
-    <a
-      href={project.repo}
-      target="_blank"
-      rel="noopener noreferrer"
+  {(caseHref || project.repo) && (
+    <div
       class:list={[
-        'flex items-center gap-2.5 text-[13px] text-muted transition hover:text-accent',
+        'flex flex-wrap items-center gap-x-6 gap-y-3',
         isFeature && 'border-t border-line/70 pt-5',
       ]}
     >
-      <Icon name="github" size={16} class="shrink-0 text-accent" />
-      <span class="font-medium">{t('work.repo')}</span>
-      {isFeature && repoLabel && <span class="ml-auto truncate font-mono text-[11px]">{repoLabel}</span>}
-    </a>
+      {caseHref && (
+        <a
+          href={caseHref}
+          class="inline-flex items-center gap-2 text-[13px] font-medium text-accent transition hover:gap-3"
+        >
+          {t('work.more')}
+          <Icon name="arrow-right" size={15} />
+        </a>
+      )}
+
+      {project.repo && (
+        <a
+          href={project.repo}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2.5 text-[13px] text-muted transition hover:text-accent"
+        >
+          <Icon name="github" size={16} class="shrink-0 text-accent" />
+          <span class="font-medium">{t('work.repo')}</span>
+          {isFeature && repoLabel && <span class="truncate font-mono text-[11px]">{repoLabel}</span>}
+        </a>
+      )}
+    </div>
   )}
 </article>

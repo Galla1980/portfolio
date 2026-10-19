@@ -11,7 +11,7 @@ type Copy = {
   stackTitle: string;
   stack: Array<{ label: string; items: string[] }>;
   method: { title: string; note: string; steps: Array<{ title: string; text: string }> };
-  evidence: { title: string; note: string };
+  projects: { title: string; note: string };
   track: {
     title: string;
     note: string;
@@ -45,9 +45,7 @@ export const copy: Record<Lang, Copy> = {
         'Trabajo cómodo en C# y .NET, con SQL Server como base de datos principal. También construí una app móvil en React Native con su API y, en equipo, una plataforma de gestión veterinaria en ASP.NET donde me ocupé del módulo de mascotas y de los dígitos verificadores.',
       ],
       specs: [
-        { label: 'Ubicación', value: 'Agronomía, Buenos Aires' },
         { label: 'Formación', value: 'Analista de Sistemas · Ingeniería en curso' },
-        { label: 'Promedio', value: '8,9 / 10' },
         { label: 'Inglés', value: 'Intermedio alto (B2)' },
         { label: 'Certificaciones', value: 'Google Cloud · Huawei ICT Academy' },
       ],
@@ -86,8 +84,8 @@ export const copy: Record<Lang, Copy> = {
         },
       ],
     },
-    evidence: {
-      title: 'Evidencia',
+    projects: {
+      title: 'Proyectos',
       note: 'Tres sistemas construidos de punta a punta, cada uno con su stack y sus decisiones técnicas.',
     },
     track: {
@@ -135,9 +133,7 @@ export const copy: Record<Lang, Copy> = {
         'I work comfortably in C# and .NET, with SQL Server as my main database. I have also built a React Native mobile app with its own API and, as part of a team, a veterinary management platform in ASP.NET where I owned the pets module and the check digits.',
       ],
       specs: [
-        { label: 'Location', value: 'Agronomía, Buenos Aires' },
         { label: 'Education', value: 'Systems Analyst · Engineering in progress' },
-        { label: 'GPA', value: '8.9 / 10' },
         { label: 'English', value: 'Upper intermediate (B2)' },
         { label: 'Certifications', value: 'Google Cloud · Huawei ICT Academy' },
       ],
@@ -176,8 +172,8 @@ export const copy: Record<Lang, Copy> = {
         },
       ],
     },
-    evidence: {
-      title: 'Evidence',
+    projects: {
+      title: 'Projects',
       note: 'Three systems built end to end, each with its own stack and technical decisions.',
     },
     track: {

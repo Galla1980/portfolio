@@ -1,0 +1,215 @@
+---
+import Icon from './Icon.astro';
+import SectionHead from './SectionHead.astro';
+import type { CaseStudy } from '../data/cases';
+import { projects } from '../data/projects';
+import type { Lang } from '../i18n/ui';
+import { routes, useTranslations } from '../i18n/utils';
+
+interface Props {
+  study: CaseStudy;
+  lang: Lang;
+}
+
+const { study, lang } = Astro.props;
+const t = useTranslations(lang);
+const content = study.content[lang];
+const project = projects.find((item) => item.slug === study.slug);
+const image = project?.image;
+const stack = project?.stack ?? [];
+const repo = study.repo ?? project?.repo;
+const backHref = `${routes.home[lang]}#proyectos`;
+---
+
+<article>
+  <header class="relative overflow-hidden border-b border-line/60">
+    <div class="aurora" aria-hidden="true"></div>
+    <div class="container-page relative py-12 sm:py-16">
+      <a
+        href={backHref}
+        class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] text-muted uppercase transition hover:text-accent"
+      >
+        <Icon name="arrow-left" size={14} />
+        {t('case.back')}
+      </a>
+
+      <div class="mt-8 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+        <div>
+          <p class="eyebrow" data-reveal>{content.eyebrow}</p>
+          <h1 class="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl" data-reveal>{content.title}</h1>
+          <p class="mt-2 text-lg text-muted" data-reveal>{content.subtitle}</p>
+          <p class="mt-5 max-w-2xl leading-relaxed text-muted" data-reveal>{content.lead}</p>
+
+          {stack.length > 0 && (
+            <ul class="mt-6 flex flex-wrap gap-1.5" data-reveal>
+              {stack.map((item) => <li class="chip">{item}</li>)}
+            </ul>
+          )}
+
+          {repo && (
+            <a
+              href={repo}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary mt-7"
+              data-reveal
+            >
+              <Icon name="github" size={16} />
+              {t('work.repo')}
+            </a>
+          )}
+        </div>
+
+        {image && (
+          <figure data-reveal style="--reveal-delay: 120ms">
+            <img
+              src={image.src}
+              alt={image.alt[lang]}
+              width="512"
+              height="307"
+              loading="eager"
+              decoding="async"
+              class="w-full rounded-xl border border-line/80 bg-surface-2/40"
+            />
+          </figure>
+        )}
+      </div>
+
+      <dl
+        class="mt-12 grid gap-5 border-t border-line/60 pt-8 sm:grid-cols-2 lg:grid-cols-4"
+        data-reveal
+      >
+        {content.meta.map((item) => (
+          <div class="grid gap-1.5">
+            <dt class="label">{item.label}</dt>
+            <dd class="text-[13px] leading-snug text-ink">{item.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container-page">
+      <SectionHead num="01" label={content.context.title} note={content.context.note} />
+
+      <div class="mt-10 grid max-w-3xl gap-5">
+        {content.context.body.map((paragraph) => (
+          <p class="text-[1.02rem] leading-relaxed text-muted" data-reveal>{paragraph}</p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section pt-0">
+    <div class="container-page">
+      <SectionHead num="02" label={content.scope.title} note={content.scope.note} />
+
+      <p class="label mt-10" data-reveal>{content.scope.processesLabel}</p>
+      <div class="mt-4 grid gap-5 sm:grid-cols-2">
+        {content.scope.processes.map((process, index) => (
+          <div class="glass p-6" data-reveal style={`--reveal-delay: ${index * 80}ms`}>
+            <h3 class="text-base font-semibold tracking-tight text-ink">{process.title}</h3>
+            <p class="mt-2 text-[13px] leading-relaxed text-muted">{process.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <p class="label mt-10" data-reveal>{content.scope.rolesLabel}</p>
+      <ul class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {content.scope.roles.map((role, index) => (
+          <li
+            class="rounded-2xl border border-line bg-surface-2/40 px-4 py-3.5"
+            data-reveal
+            style={`--reveal-delay: ${index * 60}ms`}
+          >
+            <p class="text-sm font-medium text-ink">{role.name}</p>
+            <p class="mt-1 text-[12.5px] leading-relaxed text-muted">{role.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section pt-0">
+    <div class="container-page">
+      <SectionHead num="03" label={content.architecture.title} note={content.architecture.note} />
+
+      <div class="mt-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+        <ol class="grid gap-3">
+          {content.architecture.layers.map((layer, index) => (
+            <li
+              class="rounded-2xl border border-line bg-surface-2/40 px-5 py-4"
+              data-reveal
+              style={`--reveal-delay: ${index * 60}ms`}
+            >
+              <div class="flex items-center justify-between gap-4">
+                <span class="text-sm font-medium text-ink">{layer.name}</span>
+                <span class="font-mono text-[10.5px] tracking-wide text-accent uppercase">{layer.tag}</span>
+              </div>
+              <p class="mt-1.5 text-[13px] leading-relaxed text-muted">{layer.detail}</p>
+            </li>
+          ))}
+        </ol>
+
+        <p class="max-w-xl text-[0.95rem] leading-relaxed text-muted" data-reveal>
+          {content.architecture.closing}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pt-0">
+    <div class="container-page">
+      <SectionHead num="04" label={content.decisions.title} note={content.decisions.note} />
+
+      <div class="mt-10 grid gap-5 sm:grid-cols-2">
+        {content.decisions.items.map((item, index) => (
+          <div
+            class:list={['glass card-hover flex flex-col gap-3 p-6', index === 0 && 'sm:col-span-2']}
+            data-reveal
+            style={`--reveal-delay: ${index * 70}ms`}
+          >
+            <span class="font-mono text-[11px] text-accent">{String(index + 1).padStart(2, '0')}</span>
+            <h3 class="text-base leading-snug font-semibold tracking-tight text-ink">{item.title}</h3>
+            <p class="text-[13px] leading-relaxed text-muted">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section pt-0">
+    <div class="container-page">
+      <SectionHead num="05" label={content.result.title} note={content.result.note} />
+
+      <div class="glass mt-10 p-6 sm:p-8" data-reveal>
+        <ul class="grid gap-3 sm:grid-cols-2">
+          {content.result.items.map((item) => (
+            <li class="flex items-start gap-2.5 text-[13.5px] leading-relaxed text-muted">
+              <Icon name="check" size={15} class="mt-0.5 shrink-0 text-accent" />
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        <p class="mt-6 border-t border-line/60 pt-5 text-[13.5px] leading-relaxed text-muted">
+          {content.result.closing}
+        </p>
+      </div>
+
+      <div class="hairline mt-10 flex flex-wrap items-center gap-3 pt-8">
+        {repo && (
+          <a href={repo} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <Icon name="github" size={16} />
+            {t('work.repo')}
+          </a>
+        )}
+        <a href={backHref} class="btn btn-ghost">
+          <Icon name="arrow-left" size={16} />
+          {t('case.back')}
+        </a>
+      </div>
+    </div>
+  </section>
+</article>

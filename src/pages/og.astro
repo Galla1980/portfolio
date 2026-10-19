@@ -7,7 +7,7 @@ import { site } from '../data/site';
 
 const c = copy.es;
 const stack = ['C#', '.NET Framework', 'WinForms', 'SQL Server', 'Google Cloud'];
-const facts = [c.profile.specs[0], c.profile.specs[1], c.profile.specs[3]];
+const facts = c.profile.specs.slice(0, 3);
 ---
 
 <!doctype html>

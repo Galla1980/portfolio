@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CaseStudy from '../../../components/CaseStudy.astro';
+import { caseStudyPaths } from '../../../data/cases';
+
+export function getStaticPaths() {
+  return caseStudyPaths('en');
+}
+
+const { study, lang } = Astro.props;
+---
+
+<BaseLayout title={study.content[lang].title} description={study.content[lang].lead}>
+  <CaseStudy study={study} lang={lang} />
+</BaseLayout>

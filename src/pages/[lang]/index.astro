@@ -49,7 +49,7 @@ const channels = [
           <p class="mt-6 max-w-xl text-[1.03rem] leading-relaxed text-muted">{c.lead}</p>
 
           <div class="mt-8 flex flex-wrap gap-3">
-            <a href="#evidencia" class="btn btn-primary">
+            <a href="#proyectos" class="btn btn-primary">
               {t('nav.projects')}
               <Icon name="arrow-right" size={16} />
             </a>
@@ -63,7 +63,7 @@ const channels = [
         <div class="glass p-6 sm:p-7" data-reveal style="--reveal-delay: 120ms">
           <div class="flex items-center justify-between gap-4">
             <p class="label">{c.architecture.title}</p>
-            <span class="chip">C# · .NET 4.8.1</span>
+            <span class="chip">C# · .NET</span>
           </div>
 
           <div class="mt-5 grid gap-2.5">
@@ -136,9 +136,9 @@ const channels = [
     </div>
   </section>
 
-  <section id="evidencia" class="section scroll-mt-24">
+  <section id="proyectos" class="section scroll-mt-24">
     <div class="container-page">
-      <SectionHead num="03" label={c.evidence.title} note={c.evidence.note} />
+      <SectionHead num="03" label={c.projects.title} note={c.projects.note} />
 
       <div class="mt-10 grid gap-5">
         <ProjectCard project={feature} lang={lang} variant="feature" />

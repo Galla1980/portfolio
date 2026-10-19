@@ -36,8 +36,9 @@ const es = {
     'Tres proyectos donde el análisis del problema pesó tanto como el código: arquitectura definida antes de programar, decisiones técnicas justificadas y resultados medibles.',
   'work.stack': 'Stack',
   'work.year': 'Año',
-  'work.more': 'Ver el detalle',
+  'work.more': 'Ver el caso',
   'work.repo': 'Ver repositorio',
+  'case.back': 'Volver a proyectos',
 
   'blog.eyebrow': 'Blog',
   'blog.title': 'Notas de ingeniería',
@@ -107,6 +108,7 @@ const en: Record<keyof typeof es, string> = {
   'work.year': 'Year',
   'work.more': 'Read the case study',
   'work.repo': 'View repository',
+  'case.back': 'Back to projects',
 
   'blog.eyebrow': 'Blog',
   'blog.title': 'Engineering notes',
