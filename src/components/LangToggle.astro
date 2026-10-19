@@ -1,0 +1,19 @@
+---
+import Icon from './Icon.astro';
+import { getAlternatePath, getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const alternate = getAlternatePath(Astro.url);
+const t = useTranslations(getLangFromUrl(Astro.url));
+---
+
+<a
+  href={alternate.path}
+  hreflang={alternate.lang}
+  lang={alternate.lang}
+  class="inline-flex h-9 items-center gap-1.5 rounded-full border border-line px-3 font-mono text-[11px] uppercase tracking-wide text-muted transition hover:border-accent/50 hover:text-accent"
+  aria-label={t('a11y.lang')}
+  title={t('a11y.lang')}
+>
+  <Icon name="globe" size={14} />
+  {alternate.lang}
+</a>

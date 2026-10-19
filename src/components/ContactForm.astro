@@ -1,0 +1,62 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const endpoint = site.formspree.endpoint;
+---
+
+<form
+  id="contact-form"
+  class="glass grid gap-4 p-6 sm:p-7"
+  data-endpoint={endpoint}
+  data-mailto={site.email}
+  data-label-sending={t('contact.form.sending')}
+  data-label-success={t('contact.form.success')}
+  data-label-error={t('contact.form.error')}
+  novalidate={false}
+>
+  <input type="hidden" name="_subject" value={lang === 'es' ? 'Nuevo contacto desde el portfolio' : 'New contact from the portfolio'} />
+  <input type="hidden" name="_language" value={lang} />
+
+  <div class="grid gap-4 sm:grid-cols-2">
+    <label class="grid gap-2">
+      <span class="label">{t('contact.form.name')}</span>
+      <input class="field" type="text" name="name" required autocomplete="name" placeholder="Lucas Gallardo" />
+    </label>
+    <label class="grid gap-2">
+      <span class="label">{t('contact.form.email')}</span>
+      <input class="field" type="email" name="email" required autocomplete="email" placeholder="tu@correo.com" />
+    </label>
+  </div>
+
+  <label class="grid gap-2">
+    <span class="label">{t('contact.form.message')}</span>
+    <textarea class="field min-h-32" name="message" required placeholder="Contame sobre el equipo y el proyecto."></textarea>
+  </label>
+
+  <div class="flex flex-wrap items-center gap-4">
+    <button type="submit" class="btn btn-primary">
+      <Icon name="mail" size={16} />
+      {t('contact.form.submit')}
+    </button>
+    <p id="contact-status" class="text-[13px] text-muted" role="status" hidden></p>
+  </div>
+</form>
+
+<style>
+  #contact-status[data-tone='ok'] {
+    color: var(--ok);
+  }
+
+  #contact-status[data-tone='error'] {
+    color: var(--accent-2);
+  }
+</style>

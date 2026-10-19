@@ -1,0 +1,21 @@
+---
+const target = '/es/';
+const site = import.meta.env.SITE ?? 'https://galla1980.github.io';
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lucas Gallardo · Portfolio</title>
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={new URL(target, site)} />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <script is:inline>
+      window.location.replace('/es/');
+    </script>
+  </head>
+  <body>
+    <p>Redirigiendo a <a href={target}>/es/</a>…</p>
+  </body>
+</html>

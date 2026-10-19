@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Icon from '../../../components/Icon.astro';
+import { plannedPosts } from '../../../data/posts';
+import type { Lang } from '../../../i18n/ui';
+import { routes, useTranslations } from '../../../i18n/utils';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+---
+
+<BaseLayout title={t('blog.title')} description={t('blog.lead')}>
+  <section class="relative overflow-hidden border-b border-line/60">
+    <div class="aurora" aria-hidden="true"></div>
+    <div class="container-page relative py-14 sm:py-16">
+      <p class="eyebrow" data-reveal>{t('blog.eyebrow')}</p>
+      <h1 class="mt-4 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl" data-reveal>
+        {t('blog.title')}
+      </h1>
+      <p class="mt-4 max-w-2xl leading-relaxed text-muted" data-reveal>{t('blog.lead')}</p>
+    </div>
+  </section>
+
+  <div class="container-page py-12 sm:py-16">
+    <ul class="grid gap-4">
+      {plannedPosts.map((post, index) => (
+        <li
+          class="glass card-hover group flex flex-col gap-3 p-6 sm:flex-row sm:items-center sm:gap-6"
+          data-reveal
+          style={`--reveal-delay: ${index * 80}ms`}
+        >
+          <div class="flex-1">
+            <div class="flex items-center gap-3">
+              <span class="chip">{post.tag}</span>
+              <span class="font-mono text-[11px] text-muted">
+                {post.readingTime} {t('blog.readingTime')}
+              </span>
+            </div>
+            <h2 class="mt-3 text-lg font-semibold tracking-tight text-ink">{post.title[lang]}</h2>
+            <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted">{post.description[lang]}</p>
+          </div>
+          <span class="chip shrink-0 border-accent/30 text-accent">{t('blog.empty')}</span>
+        </li>
+      ))}
+    </ul>
+
+    <a href={routes.home[lang]} class="mt-10 inline-flex items-center gap-2 text-sm text-muted transition hover:text-accent">
+      <Icon name="arrow-left" size={15} />
+      {t('blog.back')}
+    </a>
+  </div>
+</BaseLayout>

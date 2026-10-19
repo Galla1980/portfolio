@@ -1,0 +1,249 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import Icon from '../../components/Icon.astro';
+import { copy } from '../../data/profile';
+import { projects } from '../../data/projects';
+import { site } from '../../data/site';
+import type { Lang } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const c = copy[lang];
+
+const feature = projects.find((project) => project.image) ?? projects[0];
+const rest = projects.filter((project) => project !== feature);
+const channels = [
+  { href: site.linkedin, label: 'LinkedIn', value: 'lucas-gallardo-camilli', icon: 'linkedin' },
+  { href: site.github, label: 'GitHub', value: 'Galla1980', icon: 'github' },
+];
+---
+
+<BaseLayout>
+  <section class="relative overflow-hidden">
+    <div class="aurora" aria-hidden="true"></div>
+
+    <div class="container-page relative pt-16 pb-14 sm:pt-24">
+      <div class="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+        <div data-reveal>
+          <p class="glass inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[12px] text-muted">
+            <span class="relative flex h-1.5 w-1.5">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-ok opacity-60"></span>
+              <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-ok"></span>
+            </span>
+            {c.availability}
+          </p>
+
+          <h1 class="mt-6 text-[2.5rem] leading-[1.03] font-bold tracking-[-0.04em] sm:text-[3.3rem] lg:text-[3.9rem]">
+            {c.h1a}
+            <span class="grad-text block">{c.h1b}</span>
+          </h1>
+
+          <p class="mt-6 max-w-xl text-[1.03rem] leading-relaxed text-muted">{c.lead}</p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#evidencia" class="btn btn-primary">
+              {t('nav.projects')}
+              <Icon name="arrow-right" size={16} />
+            </a>
+            <a href={site.cv[lang]} class="btn btn-ghost" download>
+              <Icon name="download" size={16} />
+              {t('nav.cv')}
+            </a>
+          </div>
+        </div>
+
+        <div class="glass p-6 sm:p-7" data-reveal style="--reveal-delay: 120ms">
+          <div class="flex items-center justify-between gap-4">
+            <p class="label">{c.architecture.title}</p>
+            <span class="chip">C# · .NET 4.8.1</span>
+          </div>
+
+          <div class="mt-5 grid gap-2.5">
+            {c.architecture.layers.map((layer) => (
+              <div class="layer-row">
+                <span class="text-sm font-medium text-ink">{layer.name}</span>
+                <span class="text-right font-mono text-[10.5px] leading-tight text-muted">{layer.detail}</span>
+              </div>
+            ))}
+          </div>
+
+          <p class="mt-5 text-[13px] leading-relaxed text-muted">{c.architecture.note}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="perfil" class="section scroll-mt-24">
+    <div class="container-page">
+      <SectionHead num="01" label={c.profile.title} />
+
+      <div class="mt-10 grid gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+        <div class="space-y-5" data-reveal>
+          {c.profile.body.map((paragraph) => (
+            <p class="max-w-2xl text-[1.02rem] leading-relaxed text-muted">{paragraph}</p>
+          ))}
+
+          <div class="pt-4">
+            <p class="label">{c.stackTitle}</p>
+            <dl class="mt-5 grid gap-4 sm:grid-cols-2">
+              {c.stack.map((group) => (
+                <div>
+                  <dt class="font-mono text-[11px] text-accent">{group.label}</dt>
+                  <dd class="mt-2 flex flex-wrap gap-1.5">
+                    {group.items.map((item) => <span class="chip">{item}</span>)}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+
+        <aside class="glass h-fit p-6 sm:p-7" data-reveal style="--reveal-delay: 120ms">
+          <dl class="grid gap-5">
+            {c.profile.specs.map((spec) => (
+              <div class="grid gap-1.5 border-b border-line/60 pb-5 last:border-b-0 last:pb-0">
+                <dt class="label">{spec.label}</dt>
+                <dd class="text-[13.5px] leading-snug text-ink">{spec.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="metodo" class="section scroll-mt-24">
+    <div class="container-page">
+      <SectionHead num="02" label={c.method.title} note={c.method.note} />
+
+      <ol class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {c.method.steps.map((step, index) => (
+          <li class="step" data-reveal style={`--reveal-delay: ${index * 70}ms`}>
+            <span class="font-mono text-[11px] text-accent">{String(index + 1).padStart(2, '0')}</span>
+            <h3 class="mt-2 text-base font-semibold tracking-tight text-ink">{step.title}</h3>
+            <p class="mt-2 text-[13px] leading-relaxed text-muted">{step.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section id="evidencia" class="section scroll-mt-24">
+    <div class="container-page">
+      <SectionHead num="03" label={c.evidence.title} note={c.evidence.note} />
+
+      <div class="mt-10 grid gap-5">
+        <ProjectCard project={feature} lang={lang} variant="feature" />
+
+        <div class="grid gap-5 sm:grid-cols-2">
+          {rest.map((project, index) => (
+            <ProjectCard project={project} lang={lang} index={index + 1} />
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trayectoria" class="section scroll-mt-24">
+    <div class="container-page">
+      <SectionHead num="04" label={c.track.title} note={c.track.note} />
+
+      <div class="mt-10 grid gap-10 lg:grid-cols-2">
+        <ol class="space-y-7 border-l border-line pl-6" data-reveal>
+          {c.track.education.map((item) => (
+            <li class="relative">
+              <span class="grad-line absolute -left-[31px] top-1.5 h-2.5 w-2.5 rounded-full"></span>
+              <p class="font-mono text-[11px] text-accent">{item.period}</p>
+              <p class="mt-1.5 text-sm font-semibold text-ink">{item.title}</p>
+              <p class="text-[13px] text-muted">{item.place}</p>
+            </li>
+          ))}
+        </ol>
+
+        <div class="grid gap-8" data-reveal style="--reveal-delay: 120ms">
+          <div>
+            <p class="label">{lang === 'es' ? 'Certificaciones' : 'Certifications'}</p>
+            <ul class="mt-4 grid gap-3">
+              {c.track.certificates.map((item) => (
+                <li class="glass flex items-center gap-4 px-4 py-3.5">
+                  <Icon name="award" size={18} class="shrink-0 text-accent" />
+                  <span class="flex flex-col leading-tight">
+                    <span class="text-[13.5px] font-medium text-ink">{item.title}</span>
+                    <span class="font-mono text-[11px] text-muted">{item.place} · {item.period}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p class="label">{lang === 'es' ? 'Idiomas' : 'Languages'}</p>
+            <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+              {c.track.languages.map((item) => (
+                <li class="glass flex items-center gap-3 px-4 py-3.5">
+                  <Icon name="globe" size={17} class="shrink-0 text-accent" />
+                  <span class="flex flex-col leading-tight">
+                    <span class="text-[13.5px] font-medium text-ink">{item.label}</span>
+                    <span class="text-[11px] text-muted">{item.value}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="section scroll-mt-24">
+    <div class="container-page">
+      <SectionHead num="05" label={c.contact.title} />
+
+      <div class="mt-10 grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <div data-reveal>
+          <p class="max-w-xl text-[1.02rem] leading-relaxed text-muted">{c.contact.lead}</p>
+
+          <a
+            href={`mailto:${site.email}`}
+            class="mt-8 inline-flex items-center gap-3 font-mono text-[15px] break-all text-ink transition hover:text-accent sm:text-base"
+          >
+            <Icon name="mail" size={18} class="shrink-0 text-accent" />
+            {site.email}
+          </a>
+
+          <ul class="mt-8 grid gap-3">
+            {channels.map((channel) => (
+              <li>
+                <a
+                  href={channel.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="glass card-hover flex items-center gap-3 px-4 py-3.5"
+                >
+                  <Icon name={channel.icon} size={17} class="text-accent" />
+                  <span class="flex flex-col leading-tight">
+                    <span class="text-[13.5px] font-medium text-ink">{channel.label}</span>
+                    <span class="font-mono text-[11px] text-muted">{channel.value}</span>
+                  </span>
+                  <Icon name="arrow-up-right" size={14} class="ml-auto text-muted" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div data-reveal style="--reveal-delay: 120ms">
+          <ContactForm lang={lang} />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

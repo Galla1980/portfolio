@@ -1,0 +1,277 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
+import { copy } from '../data/profile';
+import { site } from '../data/site';
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+const lang: Lang = 'es';
+const t = useTranslations(lang);
+const c = copy[lang];
+
+const swatches = [
+  { name: 'bg', token: '--bg', className: 'bg-bg' },
+  { name: 'surface', token: '--surface', className: 'bg-surface' },
+  { name: 'surface-2', token: '--surface-2', className: 'bg-surface-2' },
+  { name: 'line', token: '--line', className: 'bg-line' },
+  { name: 'ink', token: '--ink', className: 'bg-ink' },
+  { name: 'muted', token: '--muted', className: 'bg-muted' },
+  { name: 'accent', token: '--accent', className: 'bg-accent' },
+  { name: 'accent-2', token: '--accent-2', className: 'bg-accent-2' },
+  { name: 'on-accent', token: '--on-accent', className: 'bg-on-accent' },
+  { name: 'ok', token: '--ok', className: 'bg-ok' },
+];
+
+const icons = [
+  'sun',
+  'moon',
+  'menu',
+  'close',
+  'download',
+  'arrow-right',
+  'arrow-up-right',
+  'arrow-up',
+  'arrow-left',
+  'mail',
+  'github',
+  'linkedin',
+  'map-pin',
+  'check',
+  'code',
+  'globe',
+  'graduation-cap',
+  'award',
+  'sparkles',
+];
+---
+
+<BaseLayout title="Styleguide" noindex>
+  <section class="relative overflow-hidden border-b border-line/60">
+    <div class="aurora" aria-hidden="true"></div>
+    <div class="container-page relative py-14">
+      <p class="label">Sistema de diseño</p>
+      <h1 class="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Styleguide</h1>
+      <p class="mt-3 max-w-2xl leading-relaxed text-muted">
+        Referencia interna: tokens, componentes y patrones. Paleta <strong class="text-ink">Cobre</strong> por defecto; se puede
+        comparar con <code class="font-mono text-[13px] text-accent">?palette=emerald</code> o
+        <code class="font-mono text-[13px] text-accent">?palette=plum</code>, y el tema claro con
+        <code class="font-mono text-[13px] text-accent">?theme=light</code>.
+      </p>
+    </div>
+  </section>
+
+  <div class="container-page space-y-20 py-16">
+    <section>
+      <SectionHead num="01" label="Color" note="Cada token cambia con el tema y con la paleta activa." />
+      <div class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+        {swatches.map((swatch) => (
+          <div class="glass overflow-hidden">
+            <div class={`h-16 border-b border-line/70 ${swatch.className}`}></div>
+            <div class="px-3 py-2.5">
+              <p class="text-[13px] font-medium text-ink">{swatch.name}</p>
+              <p class="font-mono text-[10px] text-muted">{swatch.token}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <SectionHead num="02" label="Tipografía" note="Inter para interfaz, JetBrains Mono para etiquetas y números." />
+      <div class="glass mt-8 space-y-7 p-6 sm:p-8">
+        <div>
+          <p class="label">display · Inter 700 · tracking −0.04em</p>
+          <p class="mt-2 text-4xl font-bold tracking-[-0.04em] sm:text-5xl">Desarrollador .NET</p>
+        </div>
+        <div>
+          <p class="label">heading · Inter 600</p>
+          <p class="mt-2 text-2xl font-semibold tracking-tight sm:text-[2rem]">Evidencia</p>
+        </div>
+        <div>
+          <p class="label">body · Inter 400</p>
+          <p class="mt-2 max-w-2xl leading-relaxed text-muted">
+            Analista de Sistemas e Ingeniero en Sistemas en formación, con experiencia en desarrollo de aplicaciones .NET con
+            C#, WinForms, ASP.NET y SQL Server.
+          </p>
+        </div>
+        <div>
+          <p class="label">mono · JetBrains Mono 500</p>
+          <p class="mt-2 font-mono text-sm text-ink">
+            SELECT TOP 10 * FROM Libros WHERE Titulo LIKE '%arquitectura%'
+          </p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <p class="label">label · mono uppercase</p>
+            <p class="label mt-2">Tecnologías</p>
+          </div>
+          <div>
+            <p class="label">grad-text · acento</p>
+            <p class="grad-text mt-2 font-mono text-2xl font-semibold">Aa 0123</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <SectionHead num="03" label="Encabezado de sección" note="Número, filete y título. Es el patrón que ordena la home." />
+      <div class="glass mt-8 p-6 sm:p-8">
+        <div class="section-head">
+          <span class="section-num">04</span>
+          <span class="section-rule"></span>
+        </div>
+        <h3 class="mt-7 text-2xl font-semibold tracking-tight text-ink sm:text-[2rem]">Trayectoria</h3>
+        <p class="mt-3 max-w-2xl leading-relaxed text-muted">Formación, certificaciones e idiomas.</p>
+      </div>
+    </section>
+
+    <section>
+      <SectionHead num="04" label="Botones y controles" />
+      <div class="glass mt-8 flex flex-wrap items-center gap-3 p-6 sm:p-8">
+        <button class="btn btn-primary">Primario <Icon name="arrow-right" size={16} /></button>
+        <button class="btn btn-ghost">Secundario</button>
+        <button class="btn btn-solid">Sólido</button>
+        <button class="btn btn-ghost"><Icon name="download" size={16} /> Descargar CV</button>
+        <button class="icon-btn"><Icon name="github" size={17} /></button>
+        <button class="btn btn-primary cursor-not-allowed opacity-50">Deshabilitado</button>
+        <a href={site.email} class="chip transition hover:text-accent">chip enlazado</a>
+      </div>
+    </section>
+
+    <section>
+      <SectionHead num="05" label="Fichas de datos" note="Pares de etiqueta y valor. Es el patrón del perfil y de la imagen para compartir." />
+      <dl class="glass mt-8 grid sm:grid-cols-3">
+        {c.profile.specs.slice(0, 3).map((spec) => (
+          <div class="border-line px-6 py-6 sm:border-l sm:first:border-l-0">
+            <dt class="label">{spec.label}</dt>
+            <dd class="mt-2 text-[13.5px] leading-snug text-ink">{spec.value}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <div class="mt-5 grid gap-5 lg:grid-cols-2">
+        <div class="glass p-6">
+          <p class="label">layer-row · arquitectura</p>
+          <div class="mt-4 grid gap-2.5">
+            {c.architecture.layers.map((layer) => (
+              <div class="layer-row">
+                <span class="text-sm font-medium text-ink">{layer.name}</span>
+                <span class="text-right font-mono text-[10.5px] leading-tight text-muted">{layer.detail}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="glass p-6">
+          <p class="label">chips · stack</p>
+          <ul class="mt-4 flex flex-wrap gap-1.5">
+            {['C#', '.NET Framework 4.8.1', 'WinForms', 'SQL Server', 'UML', 'Google Cloud'].map((item) => (
+              <li class="chip">{item}</li>
+            ))}
+          </ul>
+
+          <p class="label mt-6">badge de disponibilidad</p>
+          <p class="glass mt-3 inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[12px] text-muted">
+            <span class="relative flex h-1.5 w-1.5">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-ok opacity-60"></span>
+              <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-ok"></span>
+            </span>
+            {c.availability}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <SectionHead num="06" label="Pasos del método" />
+      <ol class="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {c.method.steps.map((step, index) => (
+          <li class="step">
+            <span class="font-mono text-[11px] text-accent">{String(index + 1).padStart(2, '0')}</span>
+            <h3 class="mt-2 text-base font-semibold tracking-tight text-ink">{step.title}</h3>
+            <p class="mt-2 text-[13px] leading-relaxed text-muted">{step.text}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section>
+      <SectionHead num="07" label="Cards de proyecto" note="Variante destacada y variante compacta." />
+      <div class="mt-8 grid gap-5 lg:grid-cols-3">
+        <div class="lg:col-span-2">
+          <ProjectCard project={projects[0]} lang={lang} variant="feature" />
+        </div>
+        <div class="grid gap-5">
+          <ProjectCard project={projects[1]} lang={lang} />
+          <ProjectCard project={projects[2]} lang={lang} />
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <SectionHead num="08" label="Trayectoria" />
+      <div class="mt-8 grid gap-8 lg:grid-cols-2">
+        <ol class="space-y-7 border-l border-line pl-6">
+          {c.track.education.map((item) => (
+            <li class="relative">
+              <span class="grad-line absolute -left-[31px] top-1.5 h-2.5 w-2.5 rounded-full"></span>
+              <p class="font-mono text-[11px] text-accent">{item.period}</p>
+              <p class="mt-1.5 text-sm font-semibold text-ink">{item.title}</p>
+              <p class="text-[13px] text-muted">{item.place}</p>
+            </li>
+          ))}
+        </ol>
+
+        <ul class="grid gap-3">
+          {c.track.certificates.map((item) => (
+            <li class="glass flex items-center gap-4 px-4 py-3.5">
+              <Icon name="award" size={18} class="shrink-0 text-accent" />
+              <span class="flex flex-col leading-tight">
+                <span class="text-[13.5px] font-medium text-ink">{item.title}</span>
+                <span class="font-mono text-[11px] text-muted">{item.place} · {item.period}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <SectionHead num="09" label="Formulario" />
+      <form class="glass mt-8 grid max-w-xl gap-4 p-6 sm:p-7">
+        <label class="grid gap-2">
+          <span class="label">{t('contact.form.name')}</span>
+          <input class="field" type="text" placeholder="Lucas Gallardo" />
+        </label>
+        <label class="grid gap-2">
+          <span class="label">{t('contact.form.email')}</span>
+          <input class="field" type="email" placeholder="tu@correo.com" />
+        </label>
+        <label class="grid gap-2">
+          <span class="label">{t('contact.form.message')}</span>
+          <textarea class="field min-h-32" placeholder="Contame sobre el equipo y el proyecto."></textarea>
+        </label>
+        <button type="button" class="btn btn-primary justify-self-start">
+          <Icon name="mail" size={16} />
+          {t('contact.form.submit')}
+        </button>
+      </form>
+    </section>
+
+    <section>
+      <SectionHead num="10" label="Iconos" />
+      <div class="glass mt-8 flex flex-wrap gap-5 p-6 sm:p-8">
+        {icons.map((name) => (
+          <div class="flex w-16 flex-col items-center gap-2 text-muted">
+            <Icon name={name} size={20} />
+            <span class="font-mono text-[9px]">{name}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

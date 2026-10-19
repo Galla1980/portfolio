@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+
+const title = 'Mensaje enviado';
+---
+
+<BaseLayout title={title} noindex>
+  <section class="relative overflow-hidden">
+    <div class="aurora" aria-hidden="true"></div>
+    <div class="container-page relative flex flex-col items-center py-24 text-center">
+      <span
+        class="grid h-14 w-14 place-items-center rounded-full border border-line bg-surface text-accent"
+        aria-hidden="true"
+      >
+        <Icon name="check" size={26} />
+      </span>
+
+      <div data-lang-block="es">
+        <h1 class="mt-7 text-2xl font-semibold tracking-tight sm:text-3xl">Mensaje enviado</h1>
+        <p class="mt-3 max-w-md leading-relaxed text-muted">
+          Gracias por escribir. Te respondo a la brevedad a la dirección que dejaste en el formulario.
+        </p>
+        <a href="/es/" class="btn btn-primary mt-8">
+          <Icon name="arrow-left" size={16} />
+          Volver al inicio
+        </a>
+      </div>
+
+      <div data-lang-block="en" lang="en" hidden>
+        <h1 class="mt-7 text-2xl font-semibold tracking-tight sm:text-3xl">Message sent</h1>
+        <p class="mt-3 max-w-md leading-relaxed text-muted">
+          Thanks for reaching out. I will get back to you soon at the address you left in the form.
+        </p>
+        <a href="/en/" class="btn btn-primary mt-8">
+          <Icon name="arrow-left" size={16} />
+          Back to home
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var lang = new URLSearchParams(window.location.search).get('language') === 'en' ? 'en' : 'es';
+      document.documentElement.lang = lang;
+      document.title = lang === 'en' ? 'Message sent · Lucas Gallardo' : 'Mensaje enviado · Lucas Gallardo';
+      var blocks = document.querySelectorAll('[data-lang-block]');
+      for (var i = 0; i < blocks.length; i++) {
+        blocks[i].hidden = blocks[i].getAttribute('data-lang-block') !== lang;
+      }
+    })();
+  </script>
+</BaseLayout>

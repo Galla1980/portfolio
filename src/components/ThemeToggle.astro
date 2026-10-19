@@ -1,0 +1,19 @@
+---
+import Icon from './Icon.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const t = useTranslations(getLangFromUrl(Astro.url));
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  class="icon-btn"
+  aria-label={t('a11y.theme')}
+  title={t('a11y.theme')}
+  data-label-dark={t('a11y.theme.dark')}
+  data-label-light={t('a11y.theme.light')}
+>
+  <Icon name="sun" class="icon-sun" size={17} />
+  <Icon name="moon" class="icon-moon" size={17} />
+</button>

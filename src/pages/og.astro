@@ -1,0 +1,62 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/jetbrains-mono';
+import '../styles/global.css';
+import { copy } from '../data/profile';
+import { site } from '../data/site';
+
+const c = copy.es;
+const stack = ['C#', '.NET Framework', 'WinForms', 'SQL Server', 'Google Cloud'];
+const facts = [c.profile.specs[0], c.profile.specs[1], c.profile.specs[3]];
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>OG · Lucas Gallardo</title>
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body>
+    <div class="relative h-[630px] w-[1200px] overflow-hidden bg-bg font-sans text-ink">
+      <div class="aurora" aria-hidden="true"></div>
+
+      <div class="relative flex h-full flex-col justify-between p-16">
+        <div class="flex items-start justify-between">
+          <div class="flex items-center gap-4">
+            <span class="grad-line grid h-14 w-14 place-items-center rounded-2xl text-xl font-bold text-on-accent">
+              {site.initials}
+            </span>
+            <span class="flex flex-col leading-tight">
+              <span class="text-2xl font-semibold tracking-tight">{site.name}</span>
+              <span class="font-mono text-[11px] tracking-[0.18em] text-muted uppercase">{c.role}</span>
+            </span>
+          </div>
+          <span class="font-mono text-[11px] tracking-[0.16em] text-muted uppercase">galla1980.github.io</span>
+        </div>
+
+        <h1 class="text-[4.1rem] leading-[1.02] font-bold tracking-[-0.045em]">
+          {c.h1a}
+          <span class="grad-text block">{c.h1b}</span>
+        </h1>
+
+        <div class="grid gap-6">
+          <ul class="flex flex-wrap gap-2">
+            {stack.map((item) => (
+              <li class="chip text-[12px]">{item}</li>
+            ))}
+          </ul>
+
+          <dl class="glass grid grid-cols-3">
+            {facts.map((fact) => (
+              <div class="border-line px-6 py-5 border-l first:border-l-0">
+                <dt class="font-mono text-[11px] tracking-[0.14em] text-accent uppercase">{fact.label}</dt>
+                <dd class="mt-1.5 text-[15px] leading-snug font-semibold text-ink">{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
