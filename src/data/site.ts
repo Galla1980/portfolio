@@ -12,5 +12,5 @@ export const site = {
   formspree: {
     endpoint: 'https://formspree.io/f/xdeajbjl',
   },
-  url: 'https://galla1980.github.io',
+  url: 'https://lucasgallardo.dev',
 } as const;

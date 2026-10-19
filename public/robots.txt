@@ -4,4 +4,4 @@ Allow: /
 Disallow: /styleguide
 Disallow: /og
 
-Sitemap: https://galla1980.github.io/sitemap.xml
+Sitemap: https://lucasgallardo.dev/sitemap.xml
