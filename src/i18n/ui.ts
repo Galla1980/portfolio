@@ -69,7 +69,6 @@ const es = {
   'footer.built': 'Diseñado y construido por Lucas Gallardo',
   'footer.stack': 'Astro · Tailwind CSS',
   'footer.rights': 'Todos los derechos reservados',
-  'footer.location': 'Agronomía, Buenos Aires',
 
   'notfound.title': 'Página no encontrada',
   'notfound.lead': 'La dirección que buscás no existe o cambió de lugar.',
@@ -139,7 +138,6 @@ const en: Record<keyof typeof es, string> = {
   'footer.built': 'Designed and built by Lucas Gallardo',
   'footer.stack': 'Astro · Tailwind CSS',
   'footer.rights': 'All rights reserved',
-  'footer.location': 'Agronomía, Buenos Aires',
 
   'notfound.title': 'Page not found',
   'notfound.lead': 'The address you requested does not exist or has moved.',
