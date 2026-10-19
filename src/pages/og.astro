@@ -24,8 +24,10 @@ const facts = c.profile.specs.slice(0, 3);
       <div class="relative flex h-full flex-col justify-between p-16">
         <div class="flex items-start justify-between">
           <div class="flex items-center gap-4">
-            <span class="grid h-14 w-14 place-items-center rounded-2xl border border-line bg-bg text-xl font-semibold tracking-tight text-ink">
-              {site.initials}
+            <span class="rounded-2xl bg-gradient-to-br from-accent to-accent-2 p-[1.5px]">
+              <span class="grid h-[53px] w-[53px] place-items-center rounded-[14.5px] bg-bg text-xl font-semibold tracking-tight text-ink">
+                {site.initials}
+              </span>
             </span>
             <span class="flex flex-col leading-tight">
               <span class="text-2xl font-semibold tracking-tight">{site.name}</span>

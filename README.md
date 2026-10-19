@@ -54,18 +54,11 @@ src/
 └─ styles/      global.css con los tokens de diseño
 ```
 
-## Pendientes
+## Publicación
 
-- Fase 3: casos de estudio de los dos proyectos restantes (VitalPet y la app móvil). Book&Go ya está publicado.
-- Fase 4: los 3 artículos del blog (hoy listados como "En preparación") con MDX y RSS.
-- Fase 6: capturas y GIFs reales del resto de los proyectos y decidir el hosting. El dominio ya está definido: `https://lucasgallardo.dev`.
-  - `public/img/book-go.png` es la única captura real por ahora (512×307, se muestra a ~480 px: conviene volver a capturarla más grande).
-  - VitalPet todavía no tiene captura ni repositorio público: cuando el repo se renombre, sumar el link en `src/data/projects.ts`.
-- El dominio está fijado en cuatro lugares (`astro.config.mjs`, `public/robots.txt`, `public/sitemap.xml` y `src/data/site.ts`) y la imagen de Open Graph lo toma de `Astro.site`: si se publica en otro dominio hay que actualizar esos cuatro.
+Se publica en GitHub Pages con dominio propio (`https://lucasgallardo.dev`). El repo todavía no incluye un workflow de despliegue porque la publicación quedó para después: cuando toque, hay que compilar `dist/` con GitHub Actions, sumar `public/CNAME` con el dominio y apuntar los DNS a GitHub.
 
-## Cómo publicarlo
-
-El repositorio vive en `github.com/Galla1980/portfolio` y todavía no está publicado. Cuando toque, el camino más simple es GitHub Pages con un workflow de Actions que compile el sitio, más el dominio propio: hay que apuntar los DNS a GitHub y sumar `public/CNAME` con `lucasgallardo.dev`.
+El dominio está fijado en cuatro lugares (`astro.config.mjs`, `public/robots.txt`, `public/sitemap.xml` y `src/data/site.ts`) y la imagen de Open Graph lo toma de `Astro.site`: si se publica en otro dominio hay que actualizar esos cuatro.
 
 ## Contacto
 
