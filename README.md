@@ -17,7 +17,6 @@ Sitio personal bilingüe (ES/EN) construido con Astro y Tailwind CSS. Estático,
 | --- | --- |
 | `/` | Redirección a `/es/` |
 | `/es/`, `/en/` | Inicio: dossier numerado (Perfil, Método, Proyectos, Trayectoria, Contacto) |
-| `/es/blog`, `/en/blog` | Índice del blog |
 | `/es/proyectos/book-go`, `/en/projects/book-go` | Caso de estudio de Book&Go |
 | `/thanks` | Confirmación del formulario (no indexada); lee `?language=en` para mostrar la versión en inglés |
 | `/styleguide` | Referencia interna del sistema de diseño (no indexada) |
@@ -45,7 +44,7 @@ La tarjeta de la home muestra el link "Ver el caso" automáticamente cuando el `
 
 ```
 src/
-├─ data/        contenido del sitio (site, profile, projects, posts, cases)
+├─ data/        contenido del sitio (site, profile, projects, cases)
 ├─ i18n/        traducciones, detección de idioma y rutas
 ├─ layouts/     BaseLayout con SEO, hreflang, JSON-LD y tema
 ├─ components/  Header, Footer, SectionHead, ProjectCard, CaseStudy, ContactForm, toggles

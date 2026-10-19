@@ -25,7 +25,6 @@ const es = {
   'nav.profile': 'Perfil',
   'nav.track': 'Trayectoria',
   'nav.projects': 'Proyectos',
-  'nav.blog': 'Blog',
   'nav.contact': 'Contacto',
   'nav.cv': 'Descargar CV',
   'nav.menu': 'Menú',
@@ -39,14 +38,6 @@ const es = {
   'work.more': 'Ver el caso',
   'work.repo': 'Ver repositorio',
   'case.back': 'Volver a proyectos',
-
-  'blog.eyebrow': 'Blog',
-  'blog.title': 'Notas de ingeniería',
-  'blog.lead':
-    'Escribo sobre lo que aprendo construyendo: arquitectura, patrones de diseño y rendimiento en SQL Server.',
-  'blog.empty': 'En preparación',
-  'blog.back': 'Volver al inicio',
-  'blog.readingTime': 'min de lectura',
 
   'contact.eyebrow': 'Contacto',
   'contact.title': 'Hablemos',
@@ -94,7 +85,6 @@ const en: Record<keyof typeof es, string> = {
   'nav.profile': 'Profile',
   'nav.track': 'Background',
   'nav.projects': 'Projects',
-  'nav.blog': 'Blog',
   'nav.contact': 'Contact',
   'nav.cv': 'Download CV',
   'nav.menu': 'Menu',
@@ -108,14 +98,6 @@ const en: Record<keyof typeof es, string> = {
   'work.more': 'Read the case study',
   'work.repo': 'View repository',
   'case.back': 'Back to projects',
-
-  'blog.eyebrow': 'Blog',
-  'blog.title': 'Engineering notes',
-  'blog.lead':
-    'I write about what I learn while building: architecture, design patterns and SQL Server performance.',
-  'blog.empty': 'In progress',
-  'blog.back': 'Back to home',
-  'blog.readingTime': 'min read',
 
   'contact.eyebrow': 'Contact',
   'contact.title': "Let's talk",

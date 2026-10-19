@@ -20,7 +20,6 @@ export function useTranslations(lang: Lang) {
 
 export const routes = {
   home: { es: '/es/', en: '/en/' },
-  blog: { es: '/es/blog', en: '/en/blog' },
   contact: { es: '/es/#contacto', en: '/en/#contacto' },
   caseStudies: { es: '/es/proyectos', en: '/en/projects' },
 } as const;
