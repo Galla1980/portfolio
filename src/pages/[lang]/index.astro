@@ -18,7 +18,7 @@ const lang = Astro.params.lang as Lang;
 const t = useTranslations(lang);
 const c = copy[lang];
 
-const feature = projects.find((project) => project.image) ?? projects[0];
+const feature = projects.find((project) => project.featured) ?? projects[0];
 const rest = projects.filter((project) => project !== feature);
 const channels = [
   { href: site.linkedin, label: 'LinkedIn', value: 'lucas-gallardo-camilli', icon: 'linkedin' },

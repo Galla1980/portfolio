@@ -33,6 +33,211 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: 'vitalpet',
+    content: {
+      es: {
+        eyebrow: 'Caso de estudio · 2026',
+        title: 'VitalPet',
+        subtitle: 'Plataforma de gestión veterinaria',
+        lead: 'Plataforma web para centralizar la operación de una veterinaria: clientes, mascotas, historia clínica, turnos, inventario y ventas. Proyecto académico en equipo de tres, con arquitectura de cinco capas y el acceso resuelto en el servidor.',
+        meta: [
+          { label: 'Rol', value: 'Desarrollo .NET en equipo de tres: capas, seguridad, auditoría y dígitos verificadores' },
+          { label: 'Alcance', value: '5 capas · 3 roles · 9 pantallas implementadas' },
+          { label: 'Interfaz', value: 'ASP.NET Web Forms sobre .NET Framework 4.8.1' },
+          { label: 'Base de datos', value: 'SQL Server con ADO.NET conectado y desconectado, bitácora y backup' },
+        ],
+        context: {
+          title: 'Contexto',
+          note: 'Qué es y de dónde salió.',
+          body: [
+            'VitalPet concentra en un solo sistema lo que en la veterinaria vivía repartido entre planillas y registros manuales: el alta de clientes y mascotas, la historia clínica, la agenda de turnos, el stock de medicamentos y productos, y la facturación de las ventas.',
+            'Fue el trabajo final de la materia Desarrollo y Arquitecturas Web, en un equipo de tres. El diseño cubrió la plataforma completa —pantallas, modelo de datos, casos de uso, un modelo de permisos por patente, familia y perfil, y las políticas de seguridad—; la entrega implementada se concentró en el núcleo de acceso y administración: autenticación, usuarios, mascotas, auditoría, backup y control de integridad.',
+            'Se construyó con ASP.NET Web Forms sobre .NET Framework 4.8.1, C#, ADO.NET y SQL Server, y se versionó con Git bajo el modelo Git Flow.',
+          ],
+        },
+        scope: {
+          title: 'Alcance',
+          note: 'Los procesos que cubre el sistema y los roles que los ejecutan.',
+          processesLabel: 'Procesos',
+          processes: [
+            {
+              title: 'Acceso y administración de usuarios',
+              text: 'Registro con validación de DNI y contraseña fuerte, bloqueo de la cuenta a los tres intentos fallidos, alta y edición de usuarios por rol, y cambio de contraseña.',
+            },
+            {
+              title: 'Gestión de mascotas',
+              text: 'Alta de mascotas con especie, raza y fecha de nacimiento, asociadas al cliente que las registra.',
+            },
+            {
+              title: 'Integridad de los datos',
+              text: 'Dígitos verificadores horizontales por registro y verticales por tabla. Si la verificación falla, el sistema entra en modo mantenimiento hasta que se repare.',
+            },
+            {
+              title: 'Auditoría y continuidad',
+              text: 'Bitácora de eventos con módulo, evento y criticidad; backup y restore de la base desde la propia aplicación; verificación y reparación de los dígitos.',
+            },
+          ],
+          rolesLabel: 'Roles',
+          roles: [
+            { name: 'Cliente', text: 'Registra sus mascotas y cambia su contraseña.' },
+            { name: 'Administrador', text: 'Gestiona usuarios y consulta la bitácora de eventos.' },
+            { name: 'Web Master', text: 'Ejecuta backup y restore, y administra los dígitos verificadores.' },
+          ],
+        },
+        architecture: {
+          title: 'Arquitectura',
+          note: 'Cinco capas, una responsabilidad cada una.',
+          layers: [
+            { name: 'Interfaz', tag: 'GUI', detail: 'Páginas ASP.NET Web Forms sobre un Master Page común. Capturan datos, muestran resultados y navegan; nunca ejecutan SQL.' },
+            { name: 'Entidades', tag: 'BE', detail: 'Objetos del negocio (usuario, mascota, evento) que viajan entre capas y se construyen desde un DataRow.' },
+            { name: 'Negocio', tag: 'BLL', detail: 'Validaciones, reglas de acceso, bloqueo por intentos, dígitos verificadores y registro de eventos.' },
+            { name: 'Datos', tag: 'DAL', detail: 'ADO.NET contra SQL Server, con una clase base que toma la cadena de conexión de Web.config.' },
+            { name: 'Servicios', tag: 'Servicios', detail: 'Lo transversal: sesión, hash y encriptación, y utilidades compartidas.' },
+          ],
+          closing: 'La interfaz no conoce SQL y la capa de datos no conoce reglas de negocio: cada capa recibe y devuelve entidades. Esa separación permitió escribir la seguridad una sola vez —en el login, el ticket y Web.config— y aplicarla en todas las pantallas.',
+        },
+        decisions: {
+          title: 'Decisiones',
+          note: 'Las cinco que definieron el sistema.',
+          items: [
+            {
+              title: 'Un rol en el ticket, la autorización en Web.config',
+              text: 'El login valida el hash, bloquea la cuenta a los tres intentos y, ya dentro, el sistema emite un ticket de Forms Authentication con el rol del usuario. En cada petición, Global.asax reconstruye el principal con ese rol y Web.config decide qué páginas lo admiten. Forzar la URL devuelve acceso denegado antes de que la página se cargue.',
+            },
+            {
+              title: 'Dos cifrados para dos problemas distintos',
+              text: 'Las contraseñas se guardan con SHA-256, un hash irreversible. Los datos personales —nombre, apellido, usuario y mail— se cifran con AES reversible, porque la aplicación necesita mostrarlos. La capa de datos descifra al leer y cifra al escribir, así que el resto del sistema trabaja con texto plano.',
+            },
+            {
+              title: 'Dígitos verificadores en dos direcciones',
+              text: 'Cada fila guarda un dígito horizontal calculado a partir de sus campos; cada tabla guarda uno vertical en una tabla de control. Si un registro se altera por fuera de la aplicación, el recálculo lo detecta, identifica la tabla y el sistema queda en mantenimiento hasta que un Web Master lo repare desde DV_Form.',
+            },
+            {
+              title: 'Conectado o desconectado, según la operación',
+              text: 'Las lecturas cortas y las validaciones usan SqlCommand y lectores con la conexión abierta; los listados y los ABM usan SqlDataAdapter y DataTable para trabajar en memoria y liberar la conexión temprano. La misma capa de datos combina los dos modelos de ADO.NET.',
+            },
+            {
+              title: 'La auditoría como parte del flujo',
+              text: 'Iniciar sesión o registrar un usuario deja un evento con módulo, fecha, usuario y criticidad. La bitácora se consulta desde la aplicación, con filtros por usuario, fecha, módulo, evento y criticidad.',
+            },
+          ],
+        },
+        result: {
+          title: 'Resultado',
+          note: 'Qué quedó entregado y funcionando.',
+          items: [
+            'Autenticación con hash SHA-256, bloqueo a los tres intentos y contraseñas validadas por longitud, mayúsculas, números y símbolos.',
+            'Autorización por rol a nivel de página con Forms Authentication, Global.asax y Web.config.',
+            'Alta de mascotas y administración de usuarios, con los datos personales cifrados en AES.',
+            'Dígitos verificadores horizontales y verticales, con pantalla de verificación y reparación para el Web Master.',
+            'Bitácora de eventos y backup y restore de la base desde la propia aplicación.',
+          ],
+          closing: 'La entrega reúne las cinco capas y las nueve pantallas del sistema. Lo que haría distinto hoy: mover la clave de cifrado fuera del código y agregar sal al hash de las contraseñas.',
+        },
+      },
+      en: {
+        eyebrow: 'Case study · 2026',
+        title: 'VitalPet',
+        subtitle: 'Veterinary clinic management platform',
+        lead: 'Web platform to centralise a veterinary clinic operation: clients, pets, clinical history, appointments, inventory and sales. A three-person academic project with a five-layer architecture and access control enforced on the server.',
+        meta: [
+          { label: 'Role', value: '.NET development in a three-person team: layers, security, auditing and check digits' },
+          { label: 'Scope', value: '5 layers · 3 roles · 9 implemented screens' },
+          { label: 'Interface', value: 'ASP.NET Web Forms on .NET Framework 4.8.1' },
+          { label: 'Database', value: 'SQL Server with connected and disconnected ADO.NET, event log and backup' },
+        ],
+        context: {
+          title: 'Context',
+          note: 'What it is and where it came from.',
+          body: [
+            'VitalPet brings into one system what used to live across spreadsheets and paper records: client and pet registration, clinical history, the appointment schedule, stock of medicines and products, and sales invoicing.',
+            'It was the final project for the Web Development and Architectures course, in a team of three. The design covered the whole platform —screens, data model, use cases, a permission model based on patente, familia and perfil, and the security policies—; the delivered build focused on the access and administration core: authentication, users, pets, auditing, backup and integrity control.',
+            'It was built with ASP.NET Web Forms on .NET Framework 4.8.1, C#, ADO.NET and SQL Server, and versioned with Git following Git Flow.',
+          ],
+        },
+        scope: {
+          title: 'Scope',
+          note: 'The processes the system covers and the roles that run them.',
+          processesLabel: 'Processes',
+          processes: [
+            {
+              title: 'Access and user management',
+              text: 'Registration with DNI validation and strong-password rules, account lockout after three failed attempts, user creation and editing by role, and password change.',
+            },
+            {
+              title: 'Pet management',
+              text: 'Pet registration with species, breed and date of birth, linked to the client who registers it.',
+            },
+            {
+              title: 'Data integrity',
+              text: 'Horizontal check digits per record and vertical ones per table. If verification fails, the system enters maintenance mode until it is repaired.',
+            },
+            {
+              title: 'Auditing and continuity',
+              text: 'Event log with module, event and criticality; database backup and restore from inside the application; check-digit verification and repair.',
+            },
+          ],
+          rolesLabel: 'Roles',
+          roles: [
+            { name: 'Client', text: 'Registers their pets and changes their password.' },
+            { name: 'Administrator', text: 'Manages users and reads the event log.' },
+            { name: 'Web Master', text: 'Runs backup and restore, and manages the check digits.' },
+          ],
+        },
+        architecture: {
+          title: 'Architecture',
+          note: 'Five layers, one responsibility each.',
+          layers: [
+            { name: 'Presentation', tag: 'GUI', detail: 'ASP.NET Web Forms pages over a shared Master Page. They capture input, render results and navigate; they never run SQL.' },
+            { name: 'Entities', tag: 'BE', detail: 'Business objects (user, pet, event) that travel between layers and are built from a DataRow.' },
+            { name: 'Business', tag: 'BLL', detail: 'Validation, access rules, attempt lockout, check digits and event logging.' },
+            { name: 'Data', tag: 'DAL', detail: 'ADO.NET against SQL Server, with a base class that reads the connection string from Web.config.' },
+            { name: 'Services', tag: 'Services', detail: 'Cross-cutting concerns: session, hashing and encryption, and shared helpers.' },
+          ],
+          closing: 'The interface knows nothing about SQL and the data layer knows nothing about business rules: each layer takes and returns entities. That separation let us write security once —in the login, the ticket and Web.config— and apply it to every screen.',
+        },
+        decisions: {
+          title: 'Decisions',
+          note: 'The five that shaped the system.',
+          items: [
+            {
+              title: 'A role in the ticket, authorisation in Web.config',
+              text: 'The login checks the hash, locks the account after three failed attempts and, once inside, the system issues a Forms Authentication ticket carrying the user role. On every request, Global.asax rebuilds the principal with that role and Web.config decides which pages accept it. Forcing a URL returns access denied before the page ever loads.',
+            },
+            {
+              title: 'Two ciphers for two different problems',
+              text: 'Passwords are stored with SHA-256, an irreversible hash. Personal data —first name, last name, username and email— is encrypted with reversible AES, because the application needs to display it. The data layer decrypts on read and encrypts on write, so the rest of the system works with plain text.',
+            },
+            {
+              title: 'Check digits in two directions',
+              text: 'Every row stores a horizontal check digit computed from its fields; every table stores a vertical one in a control table. If a record is changed outside the application, recomputation detects it, identifies the table and leaves the system in maintenance mode until a Web Master repairs it from DV_Form.',
+            },
+            {
+              title: 'Connected or disconnected, depending on the operation',
+              text: 'Short reads and validations use SqlCommand and readers with the connection open; listings and CRUD operations use SqlDataAdapter and DataTable to work in memory and release the connection early. The same data layer combines both ADO.NET models.',
+            },
+            {
+              title: 'Auditing as part of the flow',
+              text: 'Signing in or registering a user leaves an event with module, date, user and criticality. The log is queried from the application itself, filtered by user, date, module, event and criticality.',
+            },
+          ],
+        },
+        result: {
+          title: 'Outcome',
+          note: 'What was delivered and working.',
+          items: [
+            'Authentication with SHA-256 hashing, lockout after three attempts, and passwords validated for length, upper case, numbers and symbols.',
+            'Page-level role authorisation with Forms Authentication, Global.asax and Web.config.',
+            'Pet registration and user administration, with personal data encrypted in AES.',
+            'Horizontal and vertical check digits, with a verification and repair screen for the Web Master.',
+            'Event log and database backup and restore from inside the application.',
+          ],
+          closing: 'The delivery brings together the five layers and the nine screens of the system. What I would do differently today: move the encryption key out of the code and add a salt to the password hash.',
+        },
+      },
+    },
+  },
+  {
     slug: 'book-go',
     repo: 'https://github.com/Galla1980/Book-Go',
     content: {

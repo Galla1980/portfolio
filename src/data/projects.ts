@@ -9,6 +9,7 @@ export type Project = {
   highlights: Record<Lang, string[]>;
   stack: string[];
   repo?: string;
+  featured?: boolean;
   image?: { src: string; alt: Record<Lang, string> };
 };
 
@@ -25,24 +26,32 @@ export const projects: Project[] = [
       en: '.NET Developer · Academic team project',
     },
     summary: {
-      es: 'Plataforma web en ASP.NET y C# con arquitectura de cinco capas (GUI, BE, BLL, DAL y Servicios) para la gestión integral de una veterinaria: clientes, mascotas, historial clínico, turnos, inventario y ventas.',
-      en: 'Web platform in ASP.NET and C# on a five-layer architecture (GUI, BE, BLL, DAL and Services) for the end-to-end management of a veterinary clinic: clients, pets, clinical history, appointments, inventory and sales.',
+      es: 'Plataforma web en ASP.NET y C# con arquitectura de cinco capas (GUI, BE, BLL, DAL y Servicios), pensada para centralizar la operación de una veterinaria: clientes, mascotas, historia clínica, turnos, inventario y ventas.',
+      en: 'Web platform in ASP.NET and C# on a five-layer architecture (GUI, BE, BLL, DAL and Services), designed to centralise a veterinary clinic operation: clients, pets, clinical history, appointments, inventory and sales.',
     },
     highlights: {
       es: [
         'Cinco capas separadas: GUI, BE, BLL, DAL y Servicios',
-        'Control de acceso por patente, familia y perfil con los filtros nativos de ASP.NET',
+        'Autorización por rol con Forms Authentication, Global.asax y Web.config',
         'Módulo de mascotas y dígitos verificadores que detectan alteraciones en la base',
         'Hash SHA-256 y cifrado AES sobre credenciales y datos sensibles',
       ],
       en: [
         'Five separate layers: GUI, BE, BLL, DAL and Services',
-        'Access control by patente, familia and perfil with ASP.NET native filters',
+        'Role-based authorisation with Forms Authentication, Global.asax and Web.config',
         'Pets module and check digits that detect tampering in the database',
         'SHA-256 hashing and AES encryption for credentials and sensitive data',
       ],
     },
-    stack: ['ASP.NET', 'C#', 'SQL Server', 'ADO.NET', '.NET Framework', 'Git'],
+    stack: ['ASP.NET', 'C#', 'SQL Server', 'ADO.NET', '.NET Framework 4.8.1', 'Git'],
+    featured: true,
+    image: {
+      src: '/img/vitalpet.png',
+      alt: {
+        es: 'Pantalla de registro de mascotas de VitalPet, con especie, raza y fecha de nacimiento',
+        en: 'VitalPet pet registration screen, with species, breed and date of birth',
+      },
+    },
   },
   {
     slug: 'book-go',

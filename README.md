@@ -17,6 +17,7 @@ Sitio personal bilingüe (ES/EN) construido con Astro y Tailwind CSS. Estático,
 | --- | --- |
 | `/` | Redirección a `/es/` |
 | `/es/`, `/en/` | Inicio: dossier numerado (Perfil, Método, Proyectos, Trayectoria, Contacto) |
+| `/es/proyectos/vitalpet`, `/en/projects/vitalpet` | Caso de estudio de VitalPet |
 | `/es/proyectos/book-go`, `/en/projects/book-go` | Caso de estudio de Book&Go |
 | `/thanks` | Confirmación del formulario (no indexada); lee `?language=en` para mostrar la versión en inglés |
 | `/styleguide` | Referencia interna del sistema de diseño (no indexada) |
@@ -38,7 +39,7 @@ Sitio personal bilingüe (ES/EN) construido con Astro y Tailwind CSS. Estático,
 
 El contenido vive en `src/data/cases.ts` (ES y EN completos por caso) y se renderiza con `src/components/CaseStudy.astro`. Cada idioma tiene su ruta: `src/pages/[lang]/proyectos/[slug].astro` y `src/pages/[lang]/projects/[slug].astro`; las dos se generan con `caseStudyPaths(lang)`.
 
-La tarjeta de la home muestra el link "Ver el caso" automáticamente cuando el `slug` del proyecto existe en `cases.ts`: no hay que marcar nada en `projects.ts`. La captura y el stack de la página se toman del proyecto, así que no se duplican.
+La tarjeta de la home muestra el link "Ver el caso" automáticamente cuando el `slug` del proyecto existe en `cases.ts`: no hay que marcar nada en `projects.ts`. La captura y el stack de la página se toman del proyecto, así que no se duplican. El proyecto que ocupa la tarjeta grande se marca con `featured: true` en `projects.ts`.
 
 ## Estructura
 
