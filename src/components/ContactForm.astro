@@ -11,43 +11,71 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const endpoint = site.formspree.endpoint;
+const thanksUrl = `${site.url}/thanks?language=${lang}`;
 ---
 
 <form
   id="contact-form"
   class="glass grid gap-4 p-6 sm:p-7"
+  action={endpoint}
+  method="post"
   data-endpoint={endpoint}
   data-mailto={site.email}
   data-label-sending={t('contact.form.sending')}
   data-label-success={t('contact.form.success')}
   data-label-error={t('contact.form.error')}
-  novalidate={false}
 >
   <input type="hidden" name="_subject" value={lang === 'es' ? 'Nuevo contacto desde el portfolio' : 'New contact from the portfolio'} />
   <input type="hidden" name="_language" value={lang} />
+  <input type="hidden" name="_next" value={thanksUrl} />
+
+  <div class="hidden" aria-hidden="true">
+    <label>
+      No completar
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+    </label>
+  </div>
 
   <div class="grid gap-4 sm:grid-cols-2">
     <label class="grid gap-2">
       <span class="label">{t('contact.form.name')}</span>
-      <input class="field" type="text" name="name" required autocomplete="name" placeholder="Lucas Gallardo" />
+      <input
+        class="field"
+        type="text"
+        name="name"
+        required
+        autocomplete="name"
+        placeholder={t('contact.form.namePlaceholder')}
+      />
     </label>
     <label class="grid gap-2">
       <span class="label">{t('contact.form.email')}</span>
-      <input class="field" type="email" name="email" required autocomplete="email" placeholder="tu@correo.com" />
+      <input
+        class="field"
+        type="email"
+        name="email"
+        required
+        autocomplete="email"
+        placeholder={t('contact.form.emailPlaceholder')}
+      />
     </label>
   </div>
 
   <label class="grid gap-2">
     <span class="label">{t('contact.form.message')}</span>
-    <textarea class="field min-h-32" name="message" required placeholder="Contame sobre el equipo y el proyecto."></textarea>
+    <textarea
+      class="field min-h-32"
+      name="message"
+      required
+      placeholder={t('contact.form.messagePlaceholder')}></textarea>
   </label>
 
   <div class="flex flex-wrap items-center gap-4">
     <button type="submit" class="btn btn-primary">
       <Icon name="mail" size={16} />
-      {t('contact.form.submit')}
+      <span data-submit-label>{t('contact.form.submit')}</span>
     </button>
-    <p id="contact-status" class="text-[13px] text-muted" role="status" hidden></p>
+    <p id="contact-status" class="text-[13.5px] text-muted" role="status" hidden></p>
   </div>
 </form>
 

@@ -73,6 +73,8 @@ const contactForm = document.getElementById('contact-form');
 if (contactForm instanceof HTMLFormElement) {
   const status = document.getElementById('contact-status');
   const submitButton = contactForm.querySelector<HTMLButtonElement>('button[type="submit"]');
+  const submitLabel = submitButton?.querySelector<HTMLElement>('[data-submit-label]');
+  const idleLabel = submitLabel?.textContent ?? '';
 
   const setStatus = (message: string, tone: 'ok' | 'error') => {
     if (!status) return;
@@ -101,10 +103,12 @@ if (contactForm instanceof HTMLFormElement) {
       return;
     }
 
+    if (status) status.hidden = true;
+    contactForm.setAttribute('aria-busy', 'true');
+
     if (submitButton) {
       submitButton.disabled = true;
-      submitButton.dataset.label ??= submitButton.textContent ?? '';
-      submitButton.textContent = contactForm.dataset.labelSending ?? '';
+      if (submitLabel) submitLabel.textContent = contactForm.dataset.labelSending ?? '';
     }
 
     try {
@@ -122,9 +126,10 @@ if (contactForm instanceof HTMLFormElement) {
       void error;
       setStatus(contactForm.dataset.labelError ?? '', 'error');
     } finally {
+      contactForm.removeAttribute('aria-busy');
       if (submitButton) {
         submitButton.disabled = false;
-        if (submitButton.dataset.label) submitButton.textContent = submitButton.dataset.label;
+        if (submitLabel) submitLabel.textContent = idleLabel;
       }
     }
   });

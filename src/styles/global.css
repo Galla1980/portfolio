@@ -189,14 +189,14 @@
   }
 
   .chip {
-    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[11px];
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[12px];
     border: 1px solid var(--line);
     background: color-mix(in srgb, var(--surface-2) 60%, transparent);
     color: var(--muted);
   }
 
   .eyebrow {
-    @apply font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-accent;
+    @apply font-mono text-[12px] font-medium uppercase tracking-[0.2em] text-accent;
   }
 
   .section {
@@ -208,7 +208,7 @@
   }
 
   .section-num {
-    @apply font-mono text-[11px] tracking-[0.2em] text-accent;
+    @apply font-mono text-[12px] tracking-[0.2em] text-accent;
   }
 
   .section-rule {
@@ -217,11 +217,11 @@
   }
 
   .label {
-    @apply font-mono text-[10px] uppercase tracking-[0.16em] text-muted;
+    @apply font-mono text-[11px] uppercase tracking-[0.16em] text-muted;
   }
 
   .field {
-    @apply w-full rounded-2xl px-4 py-3 text-sm transition;
+    @apply w-full rounded-2xl px-4 py-3 text-base transition;
     border: 1px solid var(--line);
     background: color-mix(in srgb, var(--surface-2) 55%, transparent);
     color: var(--ink);

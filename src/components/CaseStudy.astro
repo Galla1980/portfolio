@@ -27,7 +27,7 @@ const backHref = `${routes.home[lang]}#proyectos`;
     <div class="container-page relative py-12 sm:py-16">
       <a
         href={backHref}
-        class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] text-muted uppercase transition hover:text-accent"
+        class="inline-flex items-center gap-2 font-mono text-[12px] tracking-[0.16em] text-muted uppercase transition hover:text-accent"
       >
         <Icon name="arrow-left" size={14} />
         {t('case.back')}
@@ -82,7 +82,7 @@ const backHref = `${routes.home[lang]}#proyectos`;
         {content.meta.map((item) => (
           <div class="grid gap-1.5">
             <dt class="label">{item.label}</dt>
-            <dd class="text-[13px] leading-snug text-ink">{item.value}</dd>
+            <dd class="text-[14px] leading-snug text-ink">{item.value}</dd>
           </div>
         ))}
       </dl>
@@ -110,7 +110,7 @@ const backHref = `${routes.home[lang]}#proyectos`;
         {content.scope.processes.map((process, index) => (
           <div class="glass p-6" data-reveal style={`--reveal-delay: ${index * 80}ms`}>
             <h3 class="text-base font-semibold tracking-tight text-ink">{process.title}</h3>
-            <p class="mt-2 text-[13px] leading-relaxed text-muted">{process.text}</p>
+            <p class="mt-2 text-[14px] leading-relaxed text-muted">{process.text}</p>
           </div>
         ))}
       </div>
@@ -124,7 +124,7 @@ const backHref = `${routes.home[lang]}#proyectos`;
             style={`--reveal-delay: ${index * 60}ms`}
           >
             <p class="text-sm font-medium text-ink">{role.name}</p>
-            <p class="mt-1 text-[12.5px] leading-relaxed text-muted">{role.text}</p>
+            <p class="mt-1 text-[13.5px] leading-relaxed text-muted">{role.text}</p>
           </li>
         ))}
       </ul>
@@ -145,14 +145,14 @@ const backHref = `${routes.home[lang]}#proyectos`;
             >
               <div class="flex items-center justify-between gap-4">
                 <span class="text-sm font-medium text-ink">{layer.name}</span>
-                <span class="font-mono text-[10.5px] tracking-wide text-accent uppercase">{layer.tag}</span>
+                <span class="font-mono text-[11px] tracking-wide text-accent uppercase">{layer.tag}</span>
               </div>
-              <p class="mt-1.5 text-[13px] leading-relaxed text-muted">{layer.detail}</p>
+              <p class="mt-1.5 text-[14px] leading-relaxed text-muted">{layer.detail}</p>
             </li>
           ))}
         </ol>
 
-        <p class="max-w-xl text-[0.95rem] leading-relaxed text-muted" data-reveal>
+        <p class="max-w-xl text-[1rem] leading-relaxed text-muted" data-reveal>
           {content.architecture.closing}
         </p>
       </div>
@@ -170,9 +170,9 @@ const backHref = `${routes.home[lang]}#proyectos`;
             data-reveal
             style={`--reveal-delay: ${index * 70}ms`}
           >
-            <span class="font-mono text-[11px] text-accent">{String(index + 1).padStart(2, '0')}</span>
+            <span class="font-mono text-[12px] text-accent">{String(index + 1).padStart(2, '0')}</span>
             <h3 class="text-base leading-snug font-semibold tracking-tight text-ink">{item.title}</h3>
-            <p class="text-[13px] leading-relaxed text-muted">{item.text}</p>
+            <p class="text-[14px] leading-relaxed text-muted">{item.text}</p>
           </div>
         ))}
       </div>
@@ -186,14 +186,14 @@ const backHref = `${routes.home[lang]}#proyectos`;
       <div class="glass mt-10 p-6 sm:p-8" data-reveal>
         <ul class="grid gap-3 sm:grid-cols-2">
           {content.result.items.map((item) => (
-            <li class="flex items-start gap-2.5 text-[13.5px] leading-relaxed text-muted">
+            <li class="flex items-start gap-2.5 text-[14px] leading-relaxed text-muted">
               <Icon name="check" size={15} class="mt-0.5 shrink-0 text-accent" />
               {item}
             </li>
           ))}
         </ul>
 
-        <p class="mt-6 border-t border-line/60 pt-5 text-[13.5px] leading-relaxed text-muted">
+        <p class="mt-6 border-t border-line/60 pt-5 text-[14px] leading-relaxed text-muted">
           {content.result.closing}
         </p>
       </div>

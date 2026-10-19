@@ -31,7 +31,7 @@ const links = [
       </span>
       <span class="hidden flex-col leading-tight sm:flex">
         <span class="text-sm font-semibold tracking-tight">{site.name}</span>
-        <span class="font-mono text-[10px] tracking-[0.1em] text-muted uppercase">.net developer</span>
+        <span class="font-mono text-[11px] tracking-[0.1em] text-muted uppercase">.net developer</span>
       </span>
     </a>
 
@@ -39,7 +39,7 @@ const links = [
       {links.map((link) => (
         <a
           href={link.href}
-          class="rounded-full px-3 py-2 text-[13px] text-muted transition hover:bg-surface-2/60 hover:text-ink"
+          class="rounded-full px-3 py-2 text-[14px] text-muted transition hover:bg-surface-2/60 hover:text-ink"
         >
           {link.label}
         </a>
@@ -52,7 +52,7 @@ const links = [
       <a href={site.cv[lang]} class="icon-btn" download aria-label={t('nav.cv')}>
         <Icon name="download" size={16} />
       </a>
-      <a href={routes.contact[lang]} class="btn btn-primary hidden h-9 px-4 text-[13px] sm:inline-flex">
+      <a href={routes.contact[lang]} class="btn btn-primary hidden h-9 px-4 text-[14px] sm:inline-flex">
         {t('nav.contact')}
       </a>
       <button
@@ -76,7 +76,7 @@ const links = [
       {links.map((link) => (
         <a
           href={link.href}
-          class="rounded-xl px-3 py-3 text-sm text-muted transition hover:bg-surface-2/60 hover:text-ink"
+          class="rounded-xl px-3 py-3 text-base text-muted transition hover:bg-surface-2/60 hover:text-ink"
         >
           {link.label}
         </a>

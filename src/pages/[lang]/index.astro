@@ -46,7 +46,7 @@ const channels = [
             <span class="grad-text block">{c.h1b}</span>
           </h1>
 
-          <p class="mt-6 max-w-xl text-[1.03rem] leading-relaxed text-muted">{c.lead}</p>
+          <p class="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-muted">{c.lead}</p>
 
           <div class="mt-8 flex flex-wrap gap-3">
             <a href="#proyectos" class="btn btn-primary">
@@ -70,12 +70,12 @@ const channels = [
             {c.architecture.layers.map((layer) => (
               <div class="layer-row">
                 <span class="text-sm font-medium text-ink">{layer.name}</span>
-                <span class="text-right font-mono text-[10.5px] leading-tight text-muted">{layer.detail}</span>
+                <span class="text-right font-mono text-[11px] leading-tight text-muted">{layer.detail}</span>
               </div>
             ))}
           </div>
 
-          <p class="mt-5 text-[13px] leading-relaxed text-muted">{c.architecture.note}</p>
+          <p class="mt-5 text-[14px] leading-relaxed text-muted">{c.architecture.note}</p>
         </div>
       </div>
     </div>
@@ -88,7 +88,7 @@ const channels = [
       <div class="mt-10 grid gap-10 lg:grid-cols-[1.15fr_0.85fr]">
         <div class="space-y-5" data-reveal>
           {c.profile.body.map((paragraph) => (
-            <p class="max-w-2xl text-[1.02rem] leading-relaxed text-muted">{paragraph}</p>
+            <p class="max-w-2xl text-[1.05rem] leading-relaxed text-muted">{paragraph}</p>
           ))}
 
           <div class="pt-4">
@@ -96,7 +96,7 @@ const channels = [
             <dl class="mt-5 grid gap-4 sm:grid-cols-2">
               {c.stack.map((group) => (
                 <div>
-                  <dt class="font-mono text-[11px] text-accent">{group.label}</dt>
+                  <dt class="font-mono text-[12px] text-accent">{group.label}</dt>
                   <dd class="mt-2 flex flex-wrap gap-1.5">
                     {group.items.map((item) => <span class="chip">{item}</span>)}
                   </dd>
@@ -111,7 +111,7 @@ const channels = [
             {c.profile.specs.map((spec) => (
               <div class="grid gap-1.5 border-b border-line/60 pb-5 last:border-b-0 last:pb-0">
                 <dt class="label">{spec.label}</dt>
-                <dd class="text-[13.5px] leading-snug text-ink">{spec.value}</dd>
+                <dd class="text-[14px] leading-snug text-ink">{spec.value}</dd>
               </div>
             ))}
           </dl>
@@ -127,9 +127,9 @@ const channels = [
       <ol class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {c.method.steps.map((step, index) => (
           <li class="step" data-reveal style={`--reveal-delay: ${index * 70}ms`}>
-            <span class="font-mono text-[11px] text-accent">{String(index + 1).padStart(2, '0')}</span>
+            <span class="font-mono text-[12px] text-accent">{String(index + 1).padStart(2, '0')}</span>
             <h3 class="mt-2 text-base font-semibold tracking-tight text-ink">{step.title}</h3>
-            <p class="mt-2 text-[13px] leading-relaxed text-muted">{step.text}</p>
+            <p class="mt-2 text-[14px] leading-relaxed text-muted">{step.text}</p>
           </li>
         ))}
       </ol>
@@ -161,9 +161,9 @@ const channels = [
           {c.track.education.map((item) => (
             <li class="relative">
               <span class="grad-line absolute -left-[31px] top-1.5 h-2.5 w-2.5 rounded-full"></span>
-              <p class="font-mono text-[11px] text-accent">{item.period}</p>
+              <p class="font-mono text-[12px] text-accent">{item.period}</p>
               <p class="mt-1.5 text-sm font-semibold text-ink">{item.title}</p>
-              <p class="text-[13px] text-muted">{item.place}</p>
+              <p class="text-[14px] text-muted">{item.place}</p>
             </li>
           ))}
         </ol>
@@ -176,8 +176,8 @@ const channels = [
                 <li class="glass flex items-center gap-4 px-4 py-3.5">
                   <Icon name="award" size={18} class="shrink-0 text-accent" />
                   <span class="flex flex-col leading-tight">
-                    <span class="text-[13.5px] font-medium text-ink">{item.title}</span>
-                    <span class="font-mono text-[11px] text-muted">{item.place} · {item.period}</span>
+                    <span class="text-[14px] font-medium text-ink">{item.title}</span>
+                    <span class="font-mono text-[12px] text-muted">{item.place} · {item.period}</span>
                   </span>
                 </li>
               ))}
@@ -191,8 +191,8 @@ const channels = [
                 <li class="glass flex items-center gap-3 px-4 py-3.5">
                   <Icon name="globe" size={17} class="shrink-0 text-accent" />
                   <span class="flex flex-col leading-tight">
-                    <span class="text-[13.5px] font-medium text-ink">{item.label}</span>
-                    <span class="text-[11px] text-muted">{item.value}</span>
+                    <span class="text-[14px] font-medium text-ink">{item.label}</span>
+                    <span class="text-[12px] text-muted">{item.value}</span>
                   </span>
                 </li>
               ))}
@@ -209,11 +209,11 @@ const channels = [
 
       <div class="mt-10 grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
         <div data-reveal>
-          <p class="max-w-xl text-[1.02rem] leading-relaxed text-muted">{c.contact.lead}</p>
+          <p class="max-w-xl text-[1.05rem] leading-relaxed text-muted">{c.contact.lead}</p>
 
           <a
             href={`mailto:${site.email}`}
-            class="mt-8 inline-flex items-center gap-3 font-mono text-[15px] break-all text-ink transition hover:text-accent sm:text-base"
+            class="mt-8 inline-flex items-center gap-3 font-mono text-[16px] break-all text-ink transition hover:text-accent sm:text-base"
           >
             <Icon name="mail" size={18} class="shrink-0 text-accent" />
             {site.email}
@@ -230,8 +230,8 @@ const channels = [
                 >
                   <Icon name={channel.icon} size={17} class="text-accent" />
                   <span class="flex flex-col leading-tight">
-                    <span class="text-[13.5px] font-medium text-ink">{channel.label}</span>
-                    <span class="font-mono text-[11px] text-muted">{channel.value}</span>
+                    <span class="text-[14px] font-medium text-ink">{channel.label}</span>
+                    <span class="font-mono text-[12px] text-muted">{channel.value}</span>
                   </span>
                   <Icon name="arrow-up-right" size={14} class="ml-auto text-muted" />
                 </a>
