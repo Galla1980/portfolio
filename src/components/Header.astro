@@ -21,8 +21,8 @@ const links = [
   class="sticky top-0 z-50 border-b border-transparent bg-bg/60 backdrop-blur-md transition-colors duration-300"
 >
   <div class="container-page flex h-16 items-center justify-between gap-3">
-    <a href={home} class="flex items-center gap-3" aria-label={site.name}>
-      <span class="rounded-xl bg-gradient-to-br from-accent to-accent-2 p-[1.5px]">
+    <a href={home} class="flex items-center gap-3">
+      <span aria-hidden="true" class="rounded-xl bg-gradient-to-br from-accent to-accent-2 p-[1.5px]">
         <span
           class="grid h-[33px] w-[33px] place-items-center rounded-[10.5px] bg-bg text-[13px] font-semibold tracking-tight text-ink"
         >
@@ -33,6 +33,7 @@ const links = [
         <span class="text-sm font-semibold tracking-tight">{site.name}</span>
         <span class="font-mono text-[11px] tracking-[0.1em] text-muted uppercase">.net developer</span>
       </span>
+      <span class="sr-only sm:hidden">{site.name}</span>
     </a>
 
     <nav class="hidden items-center gap-1 md:flex" aria-label={t('nav.main')}>

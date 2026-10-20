@@ -11,7 +11,7 @@ const t = useTranslations(getLangFromUrl(Astro.url));
   hreflang={alternate.lang}
   lang={alternate.lang}
   class="inline-flex h-9 items-center gap-1.5 rounded-full border border-line px-3 font-mono text-[12px] uppercase tracking-wide text-muted transition hover:border-accent/50 hover:text-accent"
-  aria-label={t('a11y.lang')}
+  aria-label={`${alternate.lang} — ${t('a11y.lang')}`}
   title={t('a11y.lang')}
 >
   <Icon name="globe" size={14} />
