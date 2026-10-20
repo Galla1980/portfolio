@@ -41,8 +41,8 @@ export const copy: Record<Lang, Copy> = {
     profile: {
       title: 'Perfil',
       body: [
-        'Me formé como analista de sistemas y sigo cursando la ingeniería. Esa base me marcó la forma de trabajar: primero entiendo el problema, después modelo el sistema y sus capas, y recién ahí escribo código.',
-        'Trabajo cómodo en C# y .NET, con SQL Server como base de datos principal. También desarrollé una app móvil en React Native con su API y, en equipo, una plataforma de gestión veterinaria en ASP.NET.',
+        'Analista de Sistemas y estudiante avanzado de Ingeniería en Sistemas. Mi enfoque combina la resolución metodológica de problemas con el diseño sólido de arquitectura y capas antes de escribir código.',
+        'Me especializo en el desarrollo backend con C# y .NET, utilizando SQL Server como motor principal. Cuento con experiencia desarrollando aplicaciones móviles en React Native integradas a APIs REST y en el desarrollo colaborativo de sistemas de gestión web en ASP.NET, responsabilizándome de módulos clave de negocio e integridad de datos.',
       ],
       specs: [
         { label: 'Formación', value: 'Analista de Sistemas · Ingeniería en curso' },
@@ -129,8 +129,8 @@ export const copy: Record<Lang, Copy> = {
     profile: {
       title: 'Profile',
       body: [
-        'I trained as a systems analyst and I am still working toward my engineering degree. That background shaped the way I work: I understand the problem first, then model the system and its layers, and only then write code.',
-        'I work comfortably in C# and .NET, with SQL Server as my main database. I have also developed a React Native mobile app with its own API and, as part of a team, a veterinary management platform in ASP.NET.',
+        'Systems Analyst and advanced student of Systems Engineering. My approach combines methodical problem-solving with solid architecture and layered design before writing code.',
+        'I specialize in backend development with C# and .NET, using SQL Server as the primary database engine. I have experience building mobile applications in React Native integrated with REST APIs, and in the collaborative development of web management systems in ASP.NET, where I took ownership of key business modules and data integrity.',
       ],
       specs: [
         { label: 'Education', value: 'Systems Analyst · Engineering in progress' },
