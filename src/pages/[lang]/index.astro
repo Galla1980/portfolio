@@ -70,7 +70,7 @@ const channels = [
             {c.architecture.layers.map((layer) => (
               <div class="layer-row">
                 <span class="text-sm font-medium text-ink">{layer.name}</span>
-                <span class="text-right font-mono text-[11px] leading-tight text-muted">{layer.detail}</span>
+                <span class="text-right font-mono text-[11px] leading-snug text-muted">{layer.detail}</span>
               </div>
             ))}
           </div>
@@ -90,20 +90,6 @@ const channels = [
           {c.profile.body.map((paragraph) => (
             <p class="max-w-2xl text-[1.05rem] leading-relaxed text-muted">{paragraph}</p>
           ))}
-
-          <div class="pt-4">
-            <p class="label">{c.stackTitle}</p>
-            <dl class="mt-5 grid gap-4 sm:grid-cols-2">
-              {c.stack.map((group) => (
-                <div>
-                  <dt class="font-mono text-[12px] text-accent">{group.label}</dt>
-                  <dd class="mt-2 flex flex-wrap gap-1.5">
-                    {group.items.map((item) => <span class="chip">{item}</span>)}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
         </div>
 
         <aside class="glass h-fit p-6 sm:p-7" data-reveal style="--reveal-delay: 120ms">
@@ -116,6 +102,20 @@ const channels = [
             ))}
           </dl>
         </aside>
+      </div>
+
+      <div class="mt-12" data-reveal style="--reveal-delay: 180ms">
+        <p class="label">{c.stackTitle}</p>
+        <dl class="mt-5 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+          {c.stack.map((group) => (
+            <div>
+              <dt class="font-mono text-[12px] text-accent">{group.label}</dt>
+              <dd class="mt-2 flex flex-wrap gap-1.5">
+                {group.items.map((item) => <span class="chip">{item}</span>)}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </div>
   </section>
@@ -175,7 +175,7 @@ const channels = [
               {c.track.certificates.map((item) => (
                 <li class="glass flex items-center gap-4 px-4 py-3.5">
                   <Icon name="award" size={18} class="shrink-0 text-accent" />
-                  <span class="flex flex-col leading-tight">
+                  <span class="flex flex-col leading-snug">
                     <span class="text-[14px] font-medium text-ink">{item.title}</span>
                     <span class="font-mono text-[12px] text-muted">{item.place} · {item.period}</span>
                   </span>
@@ -190,7 +190,7 @@ const channels = [
               {c.track.languages.map((item) => (
                 <li class="glass flex items-center gap-3 px-4 py-3.5">
                   <Icon name="globe" size={17} class="shrink-0 text-accent" />
-                  <span class="flex flex-col leading-tight">
+                  <span class="flex flex-col leading-snug">
                     <span class="text-[14px] font-medium text-ink">{item.label}</span>
                     <span class="text-[12px] text-muted">{item.value}</span>
                   </span>
@@ -229,7 +229,7 @@ const channels = [
                   class="glass card-hover flex items-center gap-3 px-4 py-3.5"
                 >
                   <Icon name={channel.icon} size={17} class="text-accent" />
-                  <span class="flex flex-col leading-tight">
+                  <span class="flex flex-col leading-snug">
                     <span class="text-[14px] font-medium text-ink">{channel.label}</span>
                     <span class="font-mono text-[12px] text-muted">{channel.value}</span>
                   </span>

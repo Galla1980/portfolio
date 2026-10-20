@@ -82,7 +82,7 @@ const backHref = `${routes.home[lang]}#proyectos`;
         {content.meta.map((item) => (
           <div class="grid gap-1.5">
             <dt class="label">{item.label}</dt>
-            <dd class="text-[14px] leading-snug text-ink">{item.value}</dd>
+            <dd class="text-[14px] leading-relaxed text-ink">{item.value}</dd>
           </div>
         ))}
       </dl>
@@ -93,9 +93,9 @@ const backHref = `${routes.home[lang]}#proyectos`;
     <div class="container-page">
       <SectionHead num="01" label={content.context.title} note={content.context.note} />
 
-      <div class="mt-10 grid max-w-3xl gap-5">
+      <div class="mt-10 grid max-w-2xl gap-5">
         {content.context.body.map((paragraph) => (
-          <p class="text-[1.02rem] leading-relaxed text-muted" data-reveal>{paragraph}</p>
+          <p class="text-[1.05rem] leading-relaxed text-muted" data-reveal>{paragraph}</p>
         ))}
       </div>
     </div>
@@ -124,7 +124,7 @@ const backHref = `${routes.home[lang]}#proyectos`;
             style={`--reveal-delay: ${index * 60}ms`}
           >
             <p class="text-sm font-medium text-ink">{role.name}</p>
-            <p class="mt-1 text-[13.5px] leading-relaxed text-muted">{role.text}</p>
+            <p class="mt-1 text-[14px] leading-relaxed text-muted">{role.text}</p>
           </li>
         ))}
       </ul>
