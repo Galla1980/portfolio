@@ -41,7 +41,7 @@ export const copy: Record<Lang, Copy> = {
     profile: {
       title: 'Perfil',
       body: [
-        'Me formé como Analista de Sistemas y sigo Ingeniería en Sistemas. Eso me dejó un sesgo que me sirve: antes de programar, entiendo el problema. Modelo el sistema, defino la arquitectura por capas y recién ahí escribo código.',
+        'Me formé como Analista de Sistemas y sigo Ingeniería en Sistemas. Esa base me marcó la forma de trabajar: primero entiendo el problema, después modelo el sistema y sus capas, y recién ahí escribo código.',
         'Trabajo cómodo en C# y .NET, con SQL Server como base de datos principal. También construí una app móvil en React Native con su API y, en equipo, una plataforma de gestión veterinaria en ASP.NET donde me ocupé del módulo de mascotas y de los dígitos verificadores.',
       ],
       specs: [
@@ -129,7 +129,7 @@ export const copy: Record<Lang, Copy> = {
     profile: {
       title: 'Profile',
       body: [
-        'I trained as a Systems Analyst and I am still studying Systems Engineering. That left me with a bias I find useful: before writing code, I understand the problem. I model the system, define the layered architecture and only then start implementing.',
+        'I trained as a Systems Analyst and I am still studying Systems Engineering. That background shaped the way I work: I understand the problem first, then model the system and its layers, and only then write code.',
         'I work comfortably in C# and .NET, with SQL Server as my main database. I have also built a React Native mobile app with its own API and, as part of a team, a veterinary management platform in ASP.NET where I owned the pets module and the check digits.',
       ],
       specs: [

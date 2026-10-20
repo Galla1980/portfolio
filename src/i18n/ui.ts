@@ -61,7 +61,6 @@ const es = {
   'footer.nav': 'Navegación',
   'footer.channels': 'Canales',
   'footer.built': 'Diseñado y construido por Lucas Gallardo',
-  'footer.stack': 'Astro · Tailwind CSS',
   'footer.rights': 'Todos los derechos reservados',
 
   'notfound.title': 'Página no encontrada',
@@ -124,7 +123,6 @@ const en: Record<keyof typeof es, string> = {
   'footer.nav': 'Navigation',
   'footer.channels': 'Channels',
   'footer.built': 'Designed and built by Lucas Gallardo',
-  'footer.stack': 'Astro · Tailwind CSS',
   'footer.rights': 'All rights reserved',
 
   'notfound.title': 'Page not found',
