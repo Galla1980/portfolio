@@ -41,7 +41,7 @@ export const copy: Record<Lang, Copy> = {
     profile: {
       title: 'Perfil',
       body: [
-        'Analista de Sistemas y estudiante avanzado de Ingeniería en Sistemas. Mi enfoque combina la resolución metodológica de problemas con el diseño sólido de arquitectura y capas antes de escribir código.',
+        'Soy analista de sistemas y estudiante avanzado de Ingeniería en Sistemas. Mi enfoque combina la resolución metodológica de problemas con el diseño sólido de arquitectura y capas antes de escribir código.',
         'Me especializo en el desarrollo backend con C# y .NET, utilizando SQL Server como motor principal. Cuento con experiencia desarrollando aplicaciones móviles en React Native integradas a APIs REST y en el desarrollo colaborativo de sistemas de gestión web en ASP.NET, responsabilizándome de módulos clave de negocio e integridad de datos.',
       ],
       specs: [
@@ -129,7 +129,7 @@ export const copy: Record<Lang, Copy> = {
     profile: {
       title: 'Profile',
       body: [
-        'Systems Analyst and advanced student of Systems Engineering. My approach combines methodical problem-solving with solid architecture and layered design before writing code.',
+        'I am a systems analyst and an advanced student of Systems Engineering. My approach combines methodical problem-solving with solid architecture and layered design before writing code.',
         'I specialize in backend development with C# and .NET, using SQL Server as the primary database engine. I have experience building mobile applications in React Native integrated with REST APIs, and in the collaborative development of web management systems in ASP.NET, where I took ownership of key business modules and data integrity.',
       ],
       specs: [
