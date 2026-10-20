@@ -41,8 +41,8 @@ export const copy: Record<Lang, Copy> = {
     profile: {
       title: 'Perfil',
       body: [
-        'Me formé como Analista de Sistemas y sigo Ingeniería en Sistemas. Esa base me marcó la forma de trabajar: primero entiendo el problema, después modelo el sistema y sus capas, y recién ahí escribo código.',
-        'Trabajo cómodo en C# y .NET, con SQL Server como base de datos principal. También construí una app móvil en React Native con su API y, en equipo, una plataforma de gestión veterinaria en ASP.NET donde me ocupé del módulo de mascotas y de los dígitos verificadores.',
+        'Me formé como analista de sistemas y sigo cursando la ingeniería. Esa base me marcó la forma de trabajar: primero entiendo el problema, después modelo el sistema y sus capas, y recién ahí escribo código.',
+        'Trabajo cómodo en C# y .NET, con SQL Server como base de datos principal. También desarrollé una app móvil en React Native con su API y, en equipo, una plataforma de gestión veterinaria en ASP.NET.',
       ],
       specs: [
         { label: 'Formación', value: 'Analista de Sistemas · Ingeniería en curso' },
@@ -129,8 +129,8 @@ export const copy: Record<Lang, Copy> = {
     profile: {
       title: 'Profile',
       body: [
-        'I trained as a Systems Analyst and I am still studying Systems Engineering. That background shaped the way I work: I understand the problem first, then model the system and its layers, and only then write code.',
-        'I work comfortably in C# and .NET, with SQL Server as my main database. I have also built a React Native mobile app with its own API and, as part of a team, a veterinary management platform in ASP.NET where I owned the pets module and the check digits.',
+        'I trained as a systems analyst and I am still working toward my engineering degree. That background shaped the way I work: I understand the problem first, then model the system and its layers, and only then write code.',
+        'I work comfortably in C# and .NET, with SQL Server as my main database. I have also developed a React Native mobile app with its own API and, as part of a team, a veterinary management platform in ASP.NET.',
       ],
       specs: [
         { label: 'Education', value: 'Systems Analyst · Engineering in progress' },
